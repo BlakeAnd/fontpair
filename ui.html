@@ -1,0 +1,483 @@
+<head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="google-fonts-link" href="a" rel="stylesheet">
+
+</head>
+<section style="display: flex; flex-direction: row;">
+
+<div style="display: flex; flex-direction: column;width: 110px; position: fixed; height: 80%">
+
+<button id="pairing" style="margin-top: 10px; color: white; background-color: #1F96EE; border: 0px; padding: 4px; border-radius: 5px;" onclick="javascript:makeRandomPairing();">New Pairing &#x21bb;</button>
+
+<p style="margin-bottom: 5px; font-family:Arial, Helvetica, sans-serif; font-weight: 700; font-size: 12px;">Heading</p>
+<select name="heading-fonts" id="heading-fonts" style="height: 28px; border: 1px solid lightgrey; border-radius: 5px; width: 105px;" oninput="javascript:changeFont('heading-fonts', 'heading-display');">
+</select>
+
+<p style="margin-bottom: 5px; font-family:Arial, Helvetica, sans-serif; font-weight: 700; font-size: 12px; ">Body</p>
+
+<select name="body-fonts" id="body-fonts" style="height: 28px; border: 1px solid lightgrey; border-radius: 5px; width: 105px" oninput="javascript:changeFont('body-fonts', 'body-display');">
+</select>
+
+<p style="margin-bottom: 5px; font-family:Arial, Helvetica, sans-serif; font-weight: 700; font-size: 12px;">Text Color</p>
+
+<div style="display: flex; flex-direction: row; width: 105px; height: 28px;">
+  <div id="text-color-mini-display" style="background-color: #ffffff; width: 24px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border: 1px solid lightgrey;"></div>
+  <span style="padding: 3px 1px 3px 4px; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey;"> #</span>
+  <input type="text" id="text-color" name="text-color" maxlength="6" value="FFFFFF" style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; border-right: 1px solid lightgrey; border-left: 0px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; width: 70px; padding: 3px 0px 3px 0px;" oninput="javascript:color('text-color', 'text')">
+</div>
+
+<p style="margin-bottom: 5px; font-family:Arial, Helvetica, sans-serif; font-weight: 700; font-size: 12px;">Background Color</p>
+
+<div style="display: flex; flex-direction: row; width: 105px; height: 28px;">
+  <div id="background-color-mini-display" style="background-color: #333333; width: 24px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border: 1px solid lightgrey;"></div>
+  <span style="padding: 3px 1px 3px 4px; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey;"> #</span>
+  <input type="text" id="background-color" name="background-color" maxlength="6" value="333333" style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; border-right: 1px solid lightgrey; border-left: 0px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; width: 70px; padding: 3px 0px 3px 0px;" oninput="javascript:color('background-color', 'background')">
+</div>
+
+<button id="frame" style="margin-top: 60px; color: black; background-color: white; border: 1px solid lightgrey; padding: 4px; border-radius: 5px; width: 86px;" onclick="makeFrame();">Use Pairing</button>
+
+</div>
+
+<div id="background" style="background-color: #333333; margin: 0px 0px -10px 120px; width: 365px; height: auto; padding: 70px 97px 30px 97px;min-height: 325px; color: #ffffff" maxlength="6">
+
+<div   id="heading-display" 
+  role="textbox" 
+  contenteditable
+    99 style="font-size: 36px; padding-bottom: 20px; font-weight: 700;">
+Click "New Pairing" to shuffle through pairings
+</div>
+
+<div   id="body-display" 
+  role="textbox" 
+  contenteditable
+    99 style="font-size: 18px; font-weight: 400;">
+    All of this text is editable. Simply click anywhere in the paragraph or heading text and start typing. You can copy and paste your own content in to see what it looks like with these font combinations.
+</div>
+
+</div>
+
+
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+
+<script>
+
+// // const loadFonts = async () => {
+//     // const font = new FontFace('Yellowtail', 'url(https://fonts.gstatic.com/s/yellowtail/v18/OZpGg_pnoDtINPfRIlLohlvHwQ.woff2)');
+//     // // wait for font to be loaded
+//     // console.log("loadfonts1", font);
+//     // console.log("flfl", font.load())
+//     // await font.load();
+
+//     // }
+
+//     // loadFonts().then(() => {
+//     //   // setStartFont(families[0], families[1]);
+//     //   var newStyle = document.createElement('style');
+//     //   newStyle.appendChild(document.createTextNode("\
+//     //   @font-face {\
+//     //       font-family: " + "Droid Sans" + ";\
+//     //       src: url('" + "..." + "') format('yourFontFormat');\
+//     //   }\
+//     //   "));
+//     //   document.head.appendChild(newStyle);
+//     //   console.log("active", WebFontConfig.fontloading("Droid Sans"))
+//     // })
+//     // loadFonts().catch(() => {
+//     //   loadFail();
+//     // })
+
+//     function loadFail () {
+//     console.log("FAIL");
+//     }
+
+// // WebFontConfig = {
+// //   loading: function() {}
+// //   // active: function() {},
+// //   // inactive: function() {},
+// //   // fontloading: function(familyName, fvd) {},
+// //   // fontactive: function(familyName, fvd) {},
+// //   // fontinactive: function(familyName, fvd) {}
+// // };
+
+// // try {
+// //     webFont.load({
+// //       loading: function() {
+// //         // JavaScript to execute when fonts start loading
+// //         console.log("loading")
+// //       },
+// //       active: function() {
+// //         // JavaScript to execute when fonts become active
+// //         console.log("active")
+
+// //       },
+// //       inactive: function() {
+// //         // JavaScript to execute when fonts become inactive
+// //         console.log("inactive")
+// //       }
+// //     })
+// //   } catch(e) {}
+
+// // console.log(WebFont.load);
+// // console.log(WebFont.loading);
+// // console.log(WebFont.active);
+
+// // try {
+// WebFont.load({
+//     google: {
+//       families: ['Yellowtail'],
+//       // urls: [
+//       //               'https://fonts.googleapis.com/css?family=Inter'
+//       //           ],
+//     },
+
+//     loading: doLoading,
+//     // function() {
+//     //   // JavaScript to execute when fonts start loading
+//     //   console.log("loading");
+//     // },
+//       active: doActive,
+//       // function() {
+//       //   // JavaScript to execute when fonts become active
+//       //   console.log("active")
+
+//       // },
+//       inactive: doInactive,
+//       // function() {
+//       //   // JavaScript to execute when fonts become inactive
+//       //   console.log("inactive")
+//       //   //  return 5;
+//       // },
+//       // fontinactive: function() {
+//       //   // JavaScript to execute when fonts become inactive
+//       //   console.log("font inactive")
+//       // }
+// });
+// // } catch(e) {console.log("fail")}
+
+// var newStyle = document.createElement('style');
+//       newStyle.appendChild(document.createTextNode("\
+//       @font-face {\
+//           font-family: " + "Droid Sans" + ";\
+//           src: 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';\
+//       }\
+//       "));
+//       document.head.appendChild(newStyle);
+//       document.getElementById("heading-display").style.fontFamily = "Droid Sans";
+
+// function doLoading () {
+//   console.log("loading")
+
+// }
+
+// function doActive () {
+//   console.log("active")
+
+// }
+
+// function doInactive () {
+//   console.log("inactive", WebFont.load.google)
+// }
+
+
+
+
+// WebFont.load({
+//     google: {
+//       families: ['Droid Sans', 'Droid Sans']
+//     }
+//   });
+
+//list of all fonts used in plugin, list is in pairs that will be randomly selected together for display
+let list = `Abril Fatface & Poppins, Abril Fatface & Josefin Sans, Abril Fatface & Lato, Abril Fatface & Poppins, Alegreya Sans & Alegreya, Alegreya & Source Sans Pro, Alegreya & Alegreya, Alegreya & Alegreya Sans, Alegreya & Nunito, Alegreya & Source Sans Pro, Alegreya Sans & Alegreya, Alfa Slab One & Gentium Book Basic, Alike Angular & Epilogue, Amatic SC & Andika, Anton & Roboto, Anton & Signika, Archivo & Tenor Sans, Archivo & Roboto, Archivo Black & Archivo, Archivo Black & Inter, Archivo Black & Tenor Sans, Arima Madurai & Mulish, Arvo & Lato, Arvo & Lato, Arvo & Lato, Arvo & Montserrat, Bai Jamjuree & K2D, Barlow Condensed & Montserrat, Barlow & Barlow Semi Condensed, BioRhyme & Varela, Bitter & Raleway, Bitter & Open Sans, Bitter & Raleway, Bodoni Moda & Karla, Bree Serif & Alegreya, Bubblegum Sans & Open Sans, Cabin & Cabin, Cabin & Raleway, Cardo & Hind, Cardo & Josefin Sans, Cardo & Libre Franklin, Cardo & Pathway Gothic One, Cardo & Josefin Sans, Catamaran & Merriweather, Chakra Petch & Padauk, Changa & Alice, Chivo & Chivo, Chivo & Crimson Text, Chivo & Rosario, Cinzel & Fauna One, Cinzel & PT Serif, Corben & Source Sans Pro, Cormorant & Fira Sans, Cormorant & Open Sans, Cormorant & Proza Libre, Cormorant Garamond & Proza Libre, Cormorant & Amiko, Darker Grotesque & Space Mono, Della Respira & Open Sans, DM Serif Display & DM Sans, DM Serif Display & Red Hat Display, DM Serif Text & DM Sans, Domine & Open Sans, Dosis & Titillium Web, Droid Sans & Ubuntu, EB Garamond & Montserrat, EB Garamond & Spline Sans, EB Garamond & EB Garamond, Eczar & Gentium Basic, Eczar & Merriweather, Eczar & Work Sans, Eczar & Varta, Elsie & Open Sans, Emblema One & Palanquin, Epilogue & Epilogue, Expletus Sans & Hind, Fahkwang & Taviraj, Fanwood Text & Fanwood Text, Fira Mono & Fira Sans, Fjalla One & Cantarell, Fjalla One & Inter, Fjalla One & Nunito, Fjalla One & Cantarell, Fjalla One & Libre Baskerville, Fjalla One & Lora, Forum & Work Sans, Francois One & Lato, Fugaz One & Work Sans, Gilda Display & Jomolhari, Goudy Bookletter 1911 & Average Sans, Grand Hotel & Lato, Grenze Gotisch & Manuale, Halant & Nunito Sans, Halant & Nunito Sans, Hind & Open Sans, IBM Plex Sans Condensed & IBM Plex Sans, IBM Plex Serif & Gothic A1, IBM Plex Serif & IBM Plex Sans, Inter & Playfair Display, Inter & Inter, Inter & Raleway, Istok Web & Average, Istok Web & Inter, Josefin Sans & Inter, Josefin Sans & Open Sans, Josefin Sans & Poppins, Josefin Sans & Cardo, Josefin Sans & Fira Mono, Josefin Sans & Lato, Josefin Slab & Josefin Sans, Julius Sans One & Monda, Junge & Lora, Karla & IBM Plex Mono, Karla & Inconsolata, Karla & Karla, Karla & Merriweather, Karla & Karla, Karla & Lato, Kreon & Ubuntu, Kreon & Inter, Lato & Catamaran, Lato & Karla, Lato & Merriweather, Libre Baskerville & Montserrat, Libre Baskerville & Nunito, Libre Baskerville & Raleway, Libre Baskerville & Source Sans Pro, Libre Baskerville & Libre Baskerville, Libre Baskerville & Libre Franklin, Libre Baskerville & Source Sans Pro, Libre Franklin & Libre Baskerville, Lobster Two & Cormorant Garamond, Lora & DM Sans, Lora & Inter, Lora & Merriweather, Lora & Roboto, Lora & Lora, Lora & Nunito, Lora & Source Sans Pro, Lora & Ubuntu, Lora & Varela Round, Lustria & Lato, Lustria & Mulish, Marmelad & Brawler, Maven Pro & Maven Pro, Merriweather & Muli, Merriweather & Source Sans Pro, Merriweather & Merriweather, Merriweather & Lato, Merriweather & Lora, Merriweather & Merriweather Sans, Merriweather & Raleway, Merriweather Sans & Merriweather, Merriweather & Oswald, Montserrat & Cardo, Montserrat & Crimson Text, Montserrat & Hind, Montserrat & Lato, Montserrat & Open Sans, Montserrat & Outfit, Montserrat & Source Sans Pro, Montserrat & Montserrat, Montserrat & Arvo, Montserrat & Cabin, Montserrat & Fira Sans, Montserrat & Inconsolata, Montserrat & Karla, Montserrat & Montserrat, Montserrat & Open Sans, Montserrat & Source Sans Pro, Montserrat & Oswald, Montserrat & Merriweather, Mulish & Inter, Mulish & Open Sans, Mulish & Roboto, Mulish & Rubik, Mulish & Space Mono, Neuton & Neuton, Neuton & Work Sans, Neuton & Lato, Nixie One & Ledger, Noto Sans & Noto Sans, Noto Serif & Noto Sans, Noto Serif & Noto Serif, Nunito & Nunito Sans, Nunito & Nunito Sans, Nunito & PT Sans, Nunito & Lora, Nunito & Nunito, Nunito & Open Sans, Nunito & PT Sans, Nunito & Roboto, Nunito Sans & Nunito Sans, Old Standard TT & Mulish, Old Standard TT & Rubik, Old Standard TT & Merriweather, Open Sans & Average Sans, Open Sans & Crimson Text, Open Sans & Domine, Open Sans & Montserrat, Open Sans & Raleway, Open Sans & Source Sans Pro, Open Sans & Open Sans, Open Sans & Open Sans, Orelega One & Montserrat, Oswald & Esteban, Oswald & Lora, Oswald & Merriweather, Oswald & Quattrocento, Oswald & Quicksand, Oswald & Roboto, Oswald & Source Sans Pro, Oswald & Source Serif Pro, Oswald & Arvo, Oswald & EB Garamond, Oswald & Montserrat, Outfit & Inter, Outfit & Montserrat, Outfit & Outfit, Outfit & Outfit, Overpass & Overpass, Overpass Mono & Alike, Ovo & Quattrocento Sans, Ovo & Gothic A1, Oxygen & Noto Serif, Oxygen & Source Sans Pro, Pathway Gothic One & Glegoo, Patua One & Maven Pro, Permanent Marker & Overpass, Permanent Marker & Inter, Philosopher & Mulish, Philosopher & Muli, Playfair Display & Alice, Playfair Display & DM Sans, Playfair Display & Lato, Playfair Display & Proza Libre, Playfair Display & Quattrocento, Playfair Display & Quattrocento Sans, Playfair Display & Raleway, Playfair Display & Source Sans Pro, Playfair Display & Source Sans Pro, Playfair Display & Fira Sans, Playfair Display & Josefin Sans, Playfair Display & Libre Baskerville, Playfair Display & Lora, Playfair Display & Source Sans Pro, Poiret One & Lato, Poiret One & Montserrat, Poiret One & Open Sans, Poppins & Lora, Prata & Lato, Prompt & Inter, Prompt & Open Sans, Prompt & Ubuntu, Prompt & Anonymous Pro, PT Sans & Bitter, PT Sans & Cabin, PT Sans & Playfair Display, PT Sans & Cabin, PT Sans & Raleway, PT Sans Narrow & PT Sans, Quattrocento & Fanwood Text, Quattrocento & Lora, Quattrocento & Quattrocento Sans, Quattrocento & Quattrocento, Quattrocento Sans & Quattrocento Sans, Questrial & Alegreya, Quicksand & Quicksand, Quicksand & Quicksand, Quicksand & Quicksand, Raleway & Frank Ruhl Libre, Raleway & Open Sans, Raleway & Cabin, Raleway & Inter, Raleway & Merriweather, Raleway & Open Sans, Raleway & PT Sans, Raleway & Roboto, Raleway & Lato, Roboto & Droid Sans, Roboto & Inter, Roboto & Lora, Roboto & Nunito, Roboto & Roboto, Roboto & Archivo, Roboto & Lora, Roboto & Nunito, Roboto & Raleway, Roboto & Roboto, Roboto Condensed & Cabin, Roboto Condensed & Cabin, Roboto Condensed & Inter, Roboto Condensed & Roboto, Roboto Condensed & Cabin, Roboto Condensed & Inter, Roboto Condensed & Vollkorn, Roboto Mono & Roboto, Roboto Slab & Roboto, Roboto Slab & Neuton, Roboto Slab & Roboto, Rokkitt & Roboto, Rokkitt & Ubuntu, Rosario & Crimson Text, Rozha One & Questrial, Rubik & Libre Baskerville, Rubik & Roboto Mono, Rubik & Rubik, Rubik & Cousine, Ruda & Roboto Slab, Rufina & Average Sans, Rufina & Oxygen, Rufina & PT Serif, Sacramento & Alice, Sacramento & Alice, Sancreek & Goudy Bookletter 1911, Scheherazade & Harmattan, Shrikhand & Fanwood Text, Sintony & Poppins, Six Caps & Inter, Six Caps & Merriweather, Six Caps & Cardo, Slabo 27px & Lato, Source Sans Pro & Open Sans, Source Sans Pro & Sintony, Source Sans Pro & Source Serif Pro, Source Sans Pro & Lora, Source Sans Pro & Montserrat, Source Sans Pro & Source Sans Pro, Source Sans Pro & Ubuntu, Source Serif Pro & Source Sans Pro, Source Serif Pro & Source Sans Pro, Space Mono & Bitter, Space Mono & Roboto, Space Mono & Space Mono, Spectral & Karla, Spline Sans & Spline Sans, Squada One & Libre Baskerville, Stick No Bills & Pontano Sans, Stint Ultra Expanded & Pontano Sans, Syne & Inter, Syne & Fira Mono, Syne & Inter, Syne & Open Sans, Teko & Ubuntu, Tenor Sans & Archivo Narrow, Trirong & Rubik, Ubuntu & Open Sans, Ubuntu & Cabin, Ubuntu & Source Sans Pro, Ultra & PT Serif, Ultra & Slabo 27px, Unica One & Crimson Text, Unica One & Inter, Uchen & Slabo 27px, Varela & Noto Serif, Varela Round & Lora, Varela Round & Gelasio, Vollkorn & Raleway, Vollkorn & Roboto, Work Sans & Merriweather, Work Sans & Open Sans, Work Sans & Taviraj, Work Sans & Work Sans, Work Sans & Crimson Text, Yatra One & Hind, Yellowtail & Lato, Yeseva One & Josefin Sans, Yeseva One & Josefin Sans, Zilla Slab & Inter`
+
+let fontpairs_array = convertListToNestedArray(list);
+
+//takes in the list of every font pair as a string and converts it to an array of every pair, with each pair being an array of 2 fonts, so that pairs can be easily randomly selected by index
+function convertListToNestedArray (list) {
+  let stripped_list = list.replace(/(, )/gm, ","); //remove space after comma
+  stripped_list = stripped_list.replace(/( & )/gm, "&"); //remove space around ampersand
+  let list_pairs_array = stripped_list.split(","); //turn the list into an array of string pairs by splitting at each comma
+  let font_pair = null;
+  let font_pairs_array = [];
+  for(let i = 0; i < list_pairs_array.length; i++){ //loop through and turn each pair of string pair of fonts into it's own array for easy selection
+    font_pair = list_pairs_array[i].split("&");
+    font_pairs_array.push(font_pair);
+  }
+  return font_pairs_array;
+}
+
+let unique_heading_fonts = findUniqueFonts(fontpairs_array, "heading");
+let unique_body_fonts = findUniqueFonts(fontpairs_array, "body");
+let unique_fonts = findUniqueFonts(fontpairs_array, "all");
+
+createDropdown("heading-fonts", unique_heading_fonts);
+createDropdown("body-fonts", unique_body_fonts);
+
+
+//takes the arrays of heading and body fonts and generates dropdown menus
+function createDropdown (dropdown_type, options) {
+  var select = document.getElementById(`${dropdown_type}`);
+  for(var i = 0; i < options.length; i++) {
+      var opt = options[i];
+      var el = document.createElement("option");
+      el.textContent = opt;
+      el.value = opt;
+      select.appendChild(el);
+  }
+}
+
+createGoogleFontsLink (unique_fonts);
+//takes on all the fonts we are using and generates a valid google fonts link
+
+function createGoogleFontsLink (fonts) {
+  var a = document.getElementById('google-fonts-link');
+  let link_string = "https://fonts.googleapis.com/css2?";
+  for(let i = 0; i < (fonts.length); i++){
+    let current_font = fonts[i];
+    link_string = link_string + "family="
+    current_font = current_font.replace(/(\s)/gm, "+");
+    link_string = link_string + current_font;
+    link_string = link_string + "&"
+  }
+  link_string = link_string + "display=block";
+  a.href = link_string;
+
+}
+
+//  loadFonts();
+
+// async function loadFonts() {   
+//     // const font = new FontFace('Yellowtail', 'url(https://fonts.googleapis.com/css2?family=yellowtail&display=swap)');
+//     // // wait for font to be loaded
+//     // console.log("loadfonts1", font);
+
+//     // await font.load();
+//     // add font to document
+//     console.log("loadfonts2", font);
+//     document.fonts.add(font);
+//     // enable font with CSS class
+//     document.body.classList.add('fonts-loaded');
+// } 
+
+// const loadFonts = async () => {
+//     const font = new FontFace('Yellowtail', 'url(https://fonts.gstatic.com/s/yellowtail/v18/OZpGg_pnoDtINPfRIlLohlvHwQ.woff2)');
+//     // wait for font to be loaded
+//     console.log("loadfonts1", font);
+//     console.log("flfl", font.load())
+//     await font.load();
+//     }
+
+//     loadFonts().then(() => {
+//       addFont();
+//     })
+//     loadFonts().catch(() => {
+//       loadFail();
+//     })
+    
+
+//     function addFont() {
+//       console.log("loadfonts2");
+//       // document.fonts.add(font);
+//       // // enable font with CSS class
+//       // document.body.classList.add('fonts-loaded');
+//     }
+
+// function loadFail () {
+//   console.log("FAIL");
+// }
+
+//makes arrays of unique fonts for dropdown menus and google fonts link
+function findUniqueFonts (fontpairs_array, type) {
+  let font_array = [];
+  if(type === "heading"){
+    font_array = getFontArray (fontpairs_array, 0);
+  }
+  else if (type === "body"){
+    font_array = getFontArray (fontpairs_array, 1);
+  }
+  else if (type === "all"){
+    let heading_array = getFontArray (fontpairs_array, 0);
+    let body_array = getFontArray (fontpairs_array, 1);
+    font_array = heading_array.concat(body_array);
+  }
+  font_array = removeDuplicates(font_array);
+  font_array = font_array.sort();
+  return font_array;
+}
+
+//removes duplicate fonts from array
+function removeDuplicates(array){
+  let old_array = array;
+  let fonts_object = {};
+  let unique_fonts = [];
+  for(let i = 0; i < old_array.length; i++){
+    let current_font = old_array[i]
+    if(current_font in fonts_object === false){
+      fonts_object[`${current_font}`] = true;
+      unique_fonts.push(current_font);
+    }
+  }
+  return unique_fonts;
+}
+
+//creates new array from either the first or second part of the font nested array that makes up the font pairs
+function getFontArray (font_pairs, inner_index) {
+  let array = [];
+  for(let i = 0; i < font_pairs.length; i++){
+    array.push(font_pairs[i][inner_index]);
+  }
+  return array;
+}
+
+setStartFont("Epilogue", "Inter");
+
+// sets the default starting fonts and colors to be displayed when the plugin is opened
+function setStartFont (heading_font, body_font) {
+  changeDropdown("heading-fonts", `${heading_font}`);
+  changeDropdown("body-fonts", `${body_font}`);
+  document.getElementById("heading-display").style.fontFamily = `${heading_font}`;
+  document.getElementById("heading-display").style.fontWeight = 700;
+  document.getElementById("body-display").style.fontFamily = `${body_font}`;
+
+  checkFontInFigma()
+  // console.log("fonts laod", document.fonts.check("12px helvetica"));
+}
+
+// window.setInterval(checkFontMatch, 5000);
+
+function checkFontMatch () {
+  var e = document.getElementById("heading-fonts");
+  var h_font =  e.options[e.selectedIndex].text;
+  // console.log("font chosen", h_font)
+
+  var f = document.getElementById("body-fonts");
+  var b_font =  f.options[f.selectedIndex].text;
+  // console.log("font chosen", b_font)
+
+  // console.log("font displayed", document.getElementById("heading-display").style.fontFamily)
+  // console.log("font displayed", document.getElementById("body-display").style.fontFamily)
+
+  // console.log("font computed", css(document.getElementById("heading-display"), "font-family"))
+}
+
+function css( element, property ) {
+    return window.getComputedStyle( element, null ).getPropertyValue( property );
+}
+
+
+
+
+//changes font when dropdown is selected
+function changeFont(input_font, display_font){  
+  var e = document.getElementById(`${input_font}`);
+  var font =  e.options[e.selectedIndex].text;
+  document.getElementById(`${display_font}`).style.fontFamily = `'${font}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces from failing
+  checkFontInFigma();
+}
+
+
+//sets the color of the background, text, and mini color viwers based on hex value entered
+function color(input_type, style){ 
+  var type = input_type;
+  const input = document.getElementById(`${input_type}`).value;
+  if(input.length === 6){
+    if(style === "background"){
+      const background = document.getElementById("background");
+      background.style.backgroundColor = `${input}`;
+      document.getElementById("background-color-mini-display").style.backgroundColor = `${input}`;
+    }
+    else if(style === "text"){
+      const text = document.getElementById("background");
+      text.style.color = `${input}`;
+      document.getElementById("text-color-mini-display").style.backgroundColor = `${input}`;
+    }
+  }
+}
+
+//selects randomly from the list of font pairings
+function makeRandomPairing() {
+  let fonts = fontpairs_array;
+
+  let randomIndex = Math.floor(Math.random() * fonts.length); 
+  var heading = fonts[randomIndex][0];
+  var body = fonts[randomIndex][1];
+  document.getElementById("body-display").style.fontFamily = `'${body}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces (ex: Slabo 27px) from failing to be used
+  document.getElementById("heading-display").style.fontFamily = `'${heading}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces (ex: Slabo 27px) from failing to be used
+
+
+  changeDropdown("heading-fonts", heading);
+  changeDropdown("body-fonts", body);
+
+  checkFontInFigma();
+}
+
+//makes dropdown menu match displlayed font when it is randomly grnerated, rather than manually selected
+function changeDropdown (dropdown_type, dropdown_value) {
+  let type = dropdown_type;
+  let value = dropdown_value;
+  var e = document.getElementById(`${type}`);
+  var opts = e.options.length;
+  for (var i=0; i<opts; i++){
+      if (e.options[i].text === value){
+          e.options[i].selected = true;
+          break;
+      }
+  }
+}
+
+function hexToRGB (color) {
+    color = color.substring(4, color.length-1)
+         .replace(/ /g, '')
+         .split(',');
+    return color;
+  }
+
+
+
+function checkFontInFigma () {
+  console.log("eee")
+  var e = document.getElementById(`heading-fonts`);
+  var heading_font = e.options[e.selectedIndex].text;
+
+  var f = document.getElementById(`body-fonts`);
+  var body_font = f.options[f.selectedIndex].text;  
+    parent.postMessage({ pluginMessage: { type: 'load-font', heading_font, body_font} }, '*');
+}
+
+function makeFrame () {
+  var e = document.getElementById(`heading-fonts`);
+  var heading_font = e.options[e.selectedIndex].text;
+
+  var f = document.getElementById(`body-fonts`);
+  var body_font = f.options[f.selectedIndex].text;
+
+  if(body_font === "Nova Mono"){
+    body_font = "NovaMono"
+  } 
+  if(heading_font === "Nova Mono"){
+    heading_font = "NovaMono"
+  }
+
+  let background_color = document.getElementById("background").style.backgroundColor;
+  background_color = hexToRGB(background_color);
+  let text_color = document.getElementById("background").style.color;
+  text_color = hexToRGB(text_color);
+  const heading_content = document.getElementById("heading-display").textContent;
+  const body_content = document.getElementById("body-display").textContent;
+
+
+
+  parent.postMessage({ pluginMessage: { type: 'create-frame', heading_font, body_font, background_color, text_color, heading_content, body_content} }, '*');
+}
+</script>
+
+<style type="text/css">
+  @font-face {
+  font-family: 'Yellowtail';
+  src: url(https://fonts.gstatic.com/s/yellowtail/v18/OZpGg_pnoDtINPfRIlLohlvHwQ.woff2) format('woff2');
+}
+</style>

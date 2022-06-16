@@ -1,0 +1,10 @@
+{
+  "name": "PairFonts",
+  "id": "1105220730154050357",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": [
+    "figma"
+  ],
+  "ui": "ui.html"
+}
