@@ -1,11 +1,14 @@
 <head>
+<meta charset="UTF-8">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="google-fonts-link" href="a" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 </head>
-<section style="display: flex; flex-direction: row;">
+
+<section id="UI" style="display: flex; flex-direction: row;">
 
 <div style="display: flex; flex-direction: column;width: 110px; position: fixed; height: 80%">
 
@@ -23,15 +26,17 @@
 <p style="margin-bottom: 5px; font-family:Arial, Helvetica, sans-serif; font-weight: 700; font-size: 12px;">Text Color</p>
 
 <div style="display: flex; flex-direction: row; width: 105px; height: 28px;">
-  <div id="text-color-mini-display" style="background-color: #ffffff; width: 24px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border: 1px solid lightgrey;"></div>
-  <span style="padding: 3px 1px 3px 4px; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey;"> #</span>
+  <input type="color" id="text-color-mini-display" style="background-color: #ffffff; width: 24px; border: 1px solid lightgrey; border-right: none; border-top-left-radius: 5px; border-bottom-left-radius: 5px; padding: 0px; padding-left: 2px" value="#ffffff" oninput="javascript:colorPickerColor('text-color-mini-display', 'text')">
+  <!-- </div> -->
+  <span style="padding: 3px 1px 3px 4px; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; "> #</span>
   <input type="text" id="text-color" name="text-color" maxlength="6" value="FFFFFF" style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; border-right: 1px solid lightgrey; border-left: 0px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; width: 70px; padding: 3px 0px 3px 0px;" oninput="javascript:color('text-color', 'text')">
 </div>
 
 <p style="margin-bottom: 5px; font-family:Arial, Helvetica, sans-serif; font-weight: 700; font-size: 12px;">Background Color</p>
 
 <div style="display: flex; flex-direction: row; width: 105px; height: 28px;">
-  <div id="background-color-mini-display" style="background-color: #333333; width: 24px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border: 1px solid lightgrey;"></div>
+  <input type="color" id="background-color-mini-display" style="background-color: #ffffff; width: 24px; height: 28px; border: 1px solid lightgrey; border-right: none; border-top-left-radius: 5px; border-bottom-left-radius: 5px; padding: 0px; padding-left: 2px"  value="#333333" oninput="javascript:colorPickerColor('background-color-mini-display', 'background')">
+  <!-- </div> -->
   <span style="padding: 3px 1px 3px 4px; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey;"> #</span>
   <input type="text" id="background-color" name="background-color" maxlength="6" value="333333" style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; border-right: 1px solid lightgrey; border-left: 0px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; width: 70px; padding: 3px 0px 3px 0px;" oninput="javascript:color('background-color', 'background')">
 </div>
@@ -40,23 +45,82 @@
 
 </div>
 
-<div id="background" style="background-color: #333333; margin: 0px 0px -10px 120px; width: 365px; height: auto; padding: 70px 97px 30px 97px;min-height: 325px; color: #ffffff" maxlength="6">
+<div style="width: 350px;  margin: 0px 0px -10px 120px;">
 
-<div   id="heading-display" 
-  role="textbox" 
-  contenteditable
-    99 style="font-size: 36px; padding-bottom: 20px; font-weight: 700;">
-Click "New Pairing" to shuffle through pairings
+<div id="background" style="scrollbar-width: 0; width: 350px; background-color: #333333;  height: auto; padding: 70px 97px 30px 97px;min-height: 280px; color: #ffffff" maxlength="6">
+  
+<div  id="alphabet-heading-display" 
+
+style="position: fixed; font-size: 12px; font-weight: 700; margin: -78px -97px 25px -97px; display: flex; flex-direction: row; background: white; color: black; justify-content: space-evenly; font-family: sans-serif; ">
+  
+  <div class="tab" id="left-tab" style="padding: 5px 10px; width: 160px; background-color: lightgrey; border-right: 1px solid grey; border-bottom: 3px solid blue;" onclick="javascript:changeTabs('left-tab')">
+    find pairing
+  </div>
+
+  <div class="tab" id="mid-tab" style="padding: 5px 10px; width: 161px; border-right: 1px solid grey; border-bottom: 3px solid white" onclick="javascript:changeTabs('mid-tab')">
+    all pairings
+  </div>
+  
+
+  <div class="tab" id="right-tab" style="padding: 5px 10px; width: 161px; border-bottom: 3px solid white;" onclick="javascript:changeTabs('right-tab')">
+    all fonts
+  </div>
 </div>
 
-<div   id="body-display" 
-  role="textbox" 
-  contenteditable
-    99 style="font-size: 18px; font-weight: 400;">
-    All of this text is editable. Simply click anywhere in the paragraph or heading text and start typing. You can copy and paste your own content in to see what it looks like with these font combinations.
+<div id="test-pairings">
+  <div style="display: flex; flex-direction: row;">
+    <i id="h-unlocked" onclick="javascript:lockClick('heading')" style="color: white;  margin: 5px 10px 0px -30px; width: 20px" class="fa fa-unlock"></i>
+    <i id="h-locked" onclick="javascript:lockClick('heading')" style="display: none;" class="fa fa-lock"></i>
+    <!-- <i style="color: blue" class="fa fa-lock-open"></i> -->
+
+
+    <div   id="heading-display" 
+      role="textbox" 
+      contenteditable
+        99 style="font-size: 36px; padding-bottom: 20px; font-weight: 700; flex-direction: column; word-wrap:break-word; width: 350px">
+    Cliiiick "New Pairing" to shuffle through pairings
+    </div>
+  </div>
+
+  <div   style="display: flex; flex-direction: row;">
+    <i id="b-unlocked" onclick="javascript:lockClick('body')" style="color:white;  margin: 5px 10px 0px -30px; width: 20px" class="fa fa-unlock"></i>
+    <i id="b-locked" onclick="javascript:lockClick('body')" style="display: none" class="fa fa-lock"></i>
+      
+  <div   id="body-display" 
+    role="textbox" 
+    contenteditable
+      99 style="font-size: 18px; font-weight: 400; flex-direction: column; word-wrap:break-word; width: 350px;">
+      All of this text is editable. Simply click anywhere in the paragraph or heading text and start typing. You can copy and paste your own content in to see what it looks like with these font combinations.
+  </div>
+  </div>
+</div>
+
+<div id="all-pairings" style="display:  none;">
+</div>
+
+<div id="all-fonts" style="display: none;">
+  <div id="heading-page">
+    Heading
+  </div>
+  <div id="body-page">
+    Body
+  </div>
+</div>
+
+
+
+
+</div>
+
+<div style="color: white; background-color: #333333; width: 350px; padding: 0px 96px 30px 96px; border: 1px solid #333333; font-family: sans-serif; display: flex; flex-direction: row; justify-content: space-evenly;">
+  <a id="heading-link" style="padding-left: 25px; text-decoration: none; color: white" href="https://www.fontpair.co/fonts/epilogue">Epilogue</a>
+  <a id="body-link" style="padding-left: 25px; text-decoration: none; color: white" href="https://www.fontpair.co/fonts/inter">Inter</a>
+  <a id="pairing-link" style="padding-left: 25px; text-decoration: none; color: white" href="https://www.fontpair.co/pairings/epilogueinter">View pairing</a>
 </div>
 
 </div>
+
+
 
 
 </section>
@@ -230,6 +294,186 @@ function createDropdown (dropdown_type, options) {
   }
 }
 
+createFontsPage();
+
+function createFontsPage () {
+  const alphabet = "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz";
+  
+  for(let i = 0 ; i < unique_heading_fonts.length; i++){
+    const div = document.createElement("div");
+    div.id = "h-div" + `${i}`;
+    div.innerHTML = `${unique_heading_fonts[i]}`;
+    div.style = "font-size: 24px; border: 1px solid lightgrey; border-radius: 8px; padding: 5px 20px; margin: 8px 0; text-align: center;"
+    div.style.fontFamily = `${unique_heading_fonts[i]}`;
+    document.getElementById("heading-page").appendChild(div);
+  }
+  for(let i = 0 ; i < unique_heading_fonts.length; i++){
+    const div = document.createElement("div");
+    div.innerHTML = alphabet;
+    // div.style = "border: 1px solid lightgrey; border-radius: 5px; padding: 5px 20px; margin: 8px 0; text-align: center;"
+    div.style.fontFamily = `${unique_heading_fonts[i]}`;
+    div.style.fontSize = "16px"
+    document.getElementById("h-div" + `${i}`).appendChild(div);
+  }
+
+  for(let i = 0 ; i < unique_body_fonts.length; i++){
+    const div = document.createElement("div");
+    div.id = "b-div" + `${i}`;
+    div.innerHTML = `${unique_body_fonts[i]}`;
+    div.style = "font-size: 24px; border: 1px solid lightgrey; border-radius: 8px; padding: 5px 20px; margin: 8px 0; text-align: center"
+    div.style.fontFamily = `${unique_body_fonts[i]}`;
+    document.getElementById("body-page").appendChild(div);
+  }
+  for(let i = 0 ; i < unique_body_fonts.length; i++){
+    const div = document.createElement("div");
+    div.innerHTML = alphabet;
+    // div.style = "border: 1px solid lightgrey; border-radius: 5px; padding: 5px 20px; margin: 8px 0; text-align: center;"
+    div.style.fontFamily = `${unique_body_fonts[i]}`;
+    div.style.fontSize = "16px"
+    document.getElementById("b-div" + `${i}`).appendChild(div);
+  }
+
+  for(let i = 0 ; i < unique_heading_fonts.length; i++){
+    document.getElementById("h-div" + `${i}`).addEventListener("click", function() {
+      clickFont(this.id);
+    });
+  };
+
+  for(let i = 0 ; i < unique_body_fonts.length; i++){
+    document.getElementById("b-div" + `${i}`).addEventListener("click", function() {
+      clickFont(this.id);
+    });
+  };
+  
+}
+
+function clickFont (id) {
+  let id_type = id.substr(0, 1)
+  let index = id.substr(5, id.length)
+  index = parseInt(index);
+
+  if(id_type === "h"){
+    let heading_font = unique_heading_fonts[index];
+    clearHeadingListStyling();
+    document.getElementById("h-div" + `${index}`).style.borderWidth = "4px" 
+    document.getElementById("h-div" + `${index}`).style.borderColor = "blue" 
+    document.getElementById("h-div" + `${index}`).style.margin = "5px 0";
+    changeDropdown("heading-fonts", heading_font);
+    document.getElementById("heading-display").style.fontFamily = heading_font;
+  }
+  else{
+    let body_font = unique_body_fonts[index];
+    clearBodyListStyling();
+    document.getElementById("b-div" + `${index}`).style.borderWidth = "4px" 
+    document.getElementById("b-div" + `${index}`).style.borderColor = "blue" 
+    document.getElementById("b-div" + `${index}`).style.margin = "5px 0";
+    changeDropdown("body-fonts", body_font);
+    document.getElementById("body-display").style.fontFamily = body_font;
+  }
+  createFontpairLinks();
+}
+
+function clearBodyListStyling () {
+  for(let i = 0; i < unique_body_fonts.length; i++){
+    document.getElementById("b-div" + `${i}`).style.borderWidth = "1px" 
+    document.getElementById("b-div" + `${i}`).style.borderColor = "lightgrey" 
+    document.getElementById("b-div" + `${i}`).style.margin = "8px 0";
+  }
+}
+
+function clearHeadingListStyling () {
+  for(let i = 0; i < unique_heading_fonts.length; i++){
+    document.getElementById("h-div" + `${i}`).style.borderWidth = "1px" 
+    document.getElementById("h-div" + `${i}`).style.borderColor = "lightgrey" 
+    document.getElementById("h-div" + `${i}`).style.margin = "8px 0";
+  }
+}
+
+function clearPairListStyling () { 
+  for(let i = 0; i < fontpairs_array.length; i++){
+    document.getElementById("div" + `${i}`).style.borderWidth = "1px" 
+    document.getElementById("div" + `${i}`).style.borderColor = "lightgrey" 
+    document.getElementById("div" + `${i}`).style.margin = "12px -50px";
+  }
+}
+
+function clearPageStyling () {
+  clearPairListStyling();
+  clearHeadingListStyling();
+  clearBodyListStyling();
+}
+
+createAllPairings();
+
+function createAllPairings () {
+  const alphabet = "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz";
+  // console.log(fontpairs_array)
+  document.getElementById("heading-page").style = "margin-left: -90px; width: 220px; display: flex; flex-direction: column;";
+  document.getElementById("body-page").style = "margin-right: -90px; width: 220px; display: flex; flex-direction: column;";
+
+  for(let i = 0 ; i < fontpairs_array.length; i++){
+    const pair_div = document.createElement("div");
+    pair_div.id = "div" + `${i}`;
+    pair_div.style = "width: 400px; margin: 12px -50px; border: 1px solid lightgrey; border-radius: 8px; padding: 8px 20px; text-align: center"
+    document.getElementById("all-pairings").appendChild(pair_div);
+  }
+  for(let i = 0 ; i < fontpairs_array.length; i++){
+    const pair_heading_div = document.createElement("div");
+    pair_heading_div.innerHTML = `${fontpairs_array[i][0]}`;
+    pair_heading_div.style.fontFamily = `${fontpairs_array[i][0]}`;
+    pair_heading_div.style.fontSize = "24px";
+    document.getElementById("div" + `${i}`).appendChild(pair_heading_div);
+  }
+  for(let i = 0 ; i < fontpairs_array.length; i++){
+    const pair_heading_div = document.createElement("div");
+    pair_heading_div.innerHTML = alphabet;
+    pair_heading_div.style.fontFamily = `${fontpairs_array[i][0]}`;
+    document.getElementById("div" + `${i}`).appendChild(pair_heading_div);
+  }
+  for(let i = 0 ; i < fontpairs_array.length; i++){
+    const pair_body_div = document.createElement("div");
+    pair_body_div.innerHTML = `${fontpairs_array[i][1]}`;
+    pair_body_div.style.fontFamily = `${fontpairs_array[i][1]}`;
+    pair_body_div.style.fontSize = "24px";
+    document.getElementById("div" + `${i}`).appendChild(pair_body_div);
+  }
+  for(let i = 0 ; i < fontpairs_array.length; i++){
+    const pair_body_div = document.createElement("div");
+    pair_body_div.innerHTML = alphabet;
+    pair_body_div.style.fontFamily = `${fontpairs_array[i][1]}`;
+    document.getElementById("div" + `${i}`).appendChild(pair_body_div);
+  }
+  for(let i = 0 ; i < fontpairs_array.length; i++){
+    document.getElementById("div" + `${i}`).addEventListener("click", function() {
+      clickPairing(this.id);
+    });
+  }
+  
+  // div.innerHTML = `${fontpairs_array[i][0]}` + " + " + `${fontpairs_array[i][1]}`;
+}
+
+function clickPairing (id) {
+  let index = id.substr(3, id.length)
+  index = parseInt(index);
+
+  let fonts = fontpairs_array[index];
+  let heading_font = fonts[0];
+  let body_font = fonts[1];
+
+  clearPairListStyling();
+  document.getElementById("div" + `${index}`).style.borderWidth = "4px" 
+    document.getElementById("div" + `${index}`).style.borderColor = "blue" 
+    document.getElementById("div" + `${index}`).style.margin = "9px -53px";
+
+  changeDropdown("heading-fonts", heading_font);
+  changeDropdown("body-fonts", body_font);
+
+  document.getElementById("heading-display").style.fontFamily = heading_font;
+  document.getElementById("body-display").style.fontFamily = body_font;
+
+  createFontpairLinks();
+}
+
 createGoogleFontsLink (unique_fonts);
 //takes on all the fonts we are using and generates a valid google fonts link
 
@@ -247,48 +491,6 @@ function createGoogleFontsLink (fonts) {
   a.href = link_string;
 
 }
-
-//  loadFonts();
-
-// async function loadFonts() {   
-//     // const font = new FontFace('Yellowtail', 'url(https://fonts.googleapis.com/css2?family=yellowtail&display=swap)');
-//     // // wait for font to be loaded
-//     // console.log("loadfonts1", font);
-
-//     // await font.load();
-//     // add font to document
-//     console.log("loadfonts2", font);
-//     document.fonts.add(font);
-//     // enable font with CSS class
-//     document.body.classList.add('fonts-loaded');
-// } 
-
-// const loadFonts = async () => {
-//     const font = new FontFace('Yellowtail', 'url(https://fonts.gstatic.com/s/yellowtail/v18/OZpGg_pnoDtINPfRIlLohlvHwQ.woff2)');
-//     // wait for font to be loaded
-//     console.log("loadfonts1", font);
-//     console.log("flfl", font.load())
-//     await font.load();
-//     }
-
-//     loadFonts().then(() => {
-//       addFont();
-//     })
-//     loadFonts().catch(() => {
-//       loadFail();
-//     })
-    
-
-//     function addFont() {
-//       console.log("loadfonts2");
-//       // document.fonts.add(font);
-//       // // enable font with CSS class
-//       // document.body.classList.add('fonts-loaded');
-//     }
-
-// function loadFail () {
-//   console.log("FAIL");
-// }
 
 //makes arrays of unique fonts for dropdown menus and google fonts link
 function findUniqueFonts (fontpairs_array, type) {
@@ -340,8 +542,10 @@ function setStartFont (heading_font, body_font) {
   changeDropdown("heading-fonts", `${heading_font}`);
   changeDropdown("body-fonts", `${body_font}`);
   document.getElementById("heading-display").style.fontFamily = `${heading_font}`;
+  // document.getElementById("alphabet-heading-display").style.fontFamily = `${heading_font}`;
   document.getElementById("heading-display").style.fontWeight = 700;
-  document.getElementById("body-display").style.fontFamily = `${body_font}`;
+ document.getElementById("body-display").style.fontFamily = `${body_font}`;
+  // document.getElementById("alphabet-body-display").style.fontFamily = `${body_font}`;
 
   checkFontInFigma()
   // console.log("fonts laod", document.fonts.check("12px helvetica"));
@@ -368,14 +572,89 @@ function css( element, property ) {
     return window.getComputedStyle( element, null ).getPropertyValue( property );
 }
 
+function changeTabs (clicked_tab) {
+  let page_displayed = null;
+  if (clicked_tab === "left-tab"){page_displayed = "test-pairings"}
+  if (clicked_tab === "mid-tab") {page_displayed = "all-pairings"}
+  if (clicked_tab === "right-tab") {page_displayed = "all-fonts"}
 
+  document.getElementById("left-tab").style.backgroundColor = "white";
+  document.getElementById("mid-tab").style.backgroundColor = "white";
+  document.getElementById("right-tab").style.backgroundColor = "white";
+
+  document.getElementById("left-tab").style.borderBottom = "3px solid white";
+  document.getElementById("mid-tab").style.borderBottom = "3px solid white";
+  document.getElementById("right-tab").style.borderBottom = "3px solid white";
+
+  document.getElementById("test-pairings").style.display = "none";
+  document.getElementById("all-pairings").style.display = "none";
+  document.getElementById("all-fonts").style.display = "none";
+
+  document.getElementById(`${clicked_tab}`).style.backgroundColor = "lightgrey";
+  document.getElementById(`${clicked_tab}`).style.borderBottom = "3px solid blue";
+
+  document.getElementById(`${page_displayed}`).style.display = "block";
+
+  if(page_displayed === "all-fonts"){
+    document.getElementById(`${page_displayed}`).style = "display: flex; flex-direction: row; justify-content: space-evenly;"
+    // document.getElementById("UI").style = "overflow: hidden"
+
+  }
+  // else if(page_displayed === "all-pairings"){
+  //   document.getElementById(`${page_displayed}`).style = "display: flex; flex-direction: row; justify-content: space-evenly;"
+  //   document.getElementById("UI").style = "overflow: hidden"
+  //   document.getElementById("heading-page").style = "margin-left: -60px; width: 200px; display: flex; flex-direction: column;";
+  //   document.getElementById("body-page").style = "margin-right: -60px; width: 200px; display: flex; flex-direction: column;";
+  // }
+}
+
+function createFontpairLinks (header_font, body_font) {
+  let base_link = "https://www.fontpair.co/";
+
+  let e = document.getElementById("heading-fonts");
+  let link_heading_font = e.options[e.selectedIndex].text;
+
+  let f = document.getElementById("body-fonts");
+  let link_body_font = f.options[f.selectedIndex].text;
+
+  // console.log("heading", base_link + "fonts/" + link_heading_font)
+  // console.log("body", base_link + "fonts/" + link_body_font)
+
+  document.getElementById("heading-link").innerHTML = link_heading_font;
+  document.getElementById("body-link").innerHTML = link_body_font;
+
+  link_heading_font = link_heading_font.toLowerCase();
+  link_heading_font = link_heading_font.replace(/\s/g, '');
+
+  link_body_font = link_body_font.toLowerCase();
+  link_body_font = link_body_font.replace(/\s/g, '');
+
+  document.getElementById("heading-link").href = base_link + "fonts/" + link_heading_font;
+  document.getElementById("body-link").href = base_link + "fonts/" + link_body_font;
+  document.getElementById("pairing-link").href = base_link + link_heading_font + "-" + link_body_font;
+
+  // var url = window.location.href;
+  //   function UrlExists(url) {
+  //       var http = new XMLHttpRequest();
+  //       http.open('HEAD', url, false);
+  //       http.send();
+  //       if (http.status != 404)
+  //           return true;
+  //       else
+  //           return false;
+  //   }
+
+}
 
 
 //changes font when dropdown is selected
 function changeFont(input_font, display_font){  
-  var e = document.getElementById(`${input_font}`);
-  var font =  e.options[e.selectedIndex].text;
+  var g = document.getElementById(`${input_font}`);
+  var font =  g.options[g.selectedIndex].text;
   document.getElementById(`${display_font}`).style.fontFamily = `'${font}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces from failing
+  // document.getElementById("alphabet-" + `${display_font}`).style.fontFamily = `'${font}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces from failing
+  clearPageStyling();
+  createFontpairLinks();
   checkFontInFigma();
 }
 
@@ -388,14 +667,43 @@ function color(input_type, style){
     if(style === "background"){
       const background = document.getElementById("background");
       background.style.backgroundColor = `${input}`;
-      document.getElementById("background-color-mini-display").style.backgroundColor = `${input}`;
+      // document.getElementById("background-color-mini-display").style.backgroundColor = `${input}`;
+      document.getElementById("background-color-mini-display").value = "#" + `${input}`;
     }
     else if(style === "text"){
       const text = document.getElementById("background");
       text.style.color = `${input}`;
-      document.getElementById("text-color-mini-display").style.backgroundColor = `${input}`;
+      // document.getElementById("text-color-mini-display").style.backgroundColor = `${input}`;
+      console.log("colorr", `${input}`)
+      document.getElementById("text-color-mini-display").value = "#" + `${input}`;
     }
   }
+}
+
+function colorPickerColor (input_type, style){
+  var type = input_type;
+  const input = document.getElementById(`${input_type}`).value;
+
+  // console.log("colorpick", input)
+
+  if(style === "background"){
+      const background = document.getElementById("background");
+      background.style.backgroundColor = `${input}`;
+      document.getElementById("background-color").value = `${input}`.substring(1);
+      // document.getElementById("background-color").innerHTML = `${input}`;
+      // document.getElementById("background-color-mini-display").style.backgroundColor = `${input}`;
+      // document.getElementById("background-color-mini-display").value = "#" + `${input}`;
+
+    }
+    else if(style === "text"){
+      const text = document.getElementById("background");
+      text.style.color = `${input}`;
+      document.getElementById("text-color").value = `${input}`.substring(1)
+      // document.getElementById("text-color-mini-display").style.backgroundColor = `${input}`;
+      // console.log("colorr", `${input}`)
+      // document.getElementById("text-color-mini-display").value = "#" + `${input}`;
+    }
+
 }
 
 //selects randomly from the list of font pairings
@@ -403,20 +711,65 @@ function makeRandomPairing() {
   let fonts = fontpairs_array;
 
   let randomIndex = Math.floor(Math.random() * fonts.length); 
-  var heading = fonts[randomIndex][0];
-  var body = fonts[randomIndex][1];
-  document.getElementById("body-display").style.fontFamily = `'${body}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces (ex: Slabo 27px) from failing to be used
-  document.getElementById("heading-display").style.fontFamily = `'${heading}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces (ex: Slabo 27px) from failing to be used
-
-
-  changeDropdown("heading-fonts", heading);
-  changeDropdown("body-fonts", body);
-
+  console.log("lh", locked("heading"))
+  if(locked("heading") === false){
+    var heading = fonts[randomIndex][0];    
+    document.getElementById("heading-display").style.fontFamily = `'${heading}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces (ex: Slabo 27px) from failing to be used
+    changeDropdown("heading-fonts", heading);
+  }
+  if(locked("body") === false){
+    var body = fonts[randomIndex][1];
+    document.getElementById("body-display").style.fontFamily = `'${body}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces (ex: Slabo 27px) from failing to be used
+    changeDropdown("body-fonts", body);
+  }
+  
+  clearPageStyling();
+  createFontpairLinks();
   checkFontInFigma();
+}
+
+let heading_locked = false;
+let body_locked = false;
+function lockClick (type) {
+  console.log(type)
+  if(type === "heading"){
+    heading_locked = !heading_locked;
+    if(heading_locked === true){
+      document.getElementById("h-locked").style = "display: block; color: white; margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("h-unlocked").style.display = "none";
+    }
+    else{
+      document.getElementById("h-unlocked").style = "display: block; color: white; margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("h-locked").style.display = "none";
+    }
+  }
+  else{
+    body_locked = !body_locked;
+    if(body_locked === true){
+      document.getElementById("b-locked").style = "display: block; color: white;  margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("b-unlocked").style.display = "none";
+    }
+    else{
+      document.getElementById("b-unlocked").style = "display: block; color: white;  margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("b-locked").style.display = "none";
+    }
+  }
+  console.log(body_locked)
+}
+  
+
+function locked (type) {
+  if(type === "heading"){
+    return heading_locked;
+  }
+  else{
+    return body_locked;
+  }
 }
 
 //makes dropdown menu match displlayed font when it is randomly grnerated, rather than manually selected
 function changeDropdown (dropdown_type, dropdown_value) {
+  console.log(dropdown_type, dropdown_value)
   let type = dropdown_type;
   let value = dropdown_value;
   var e = document.getElementById(`${type}`);
