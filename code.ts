@@ -53,8 +53,11 @@ figma.ui.onmessage = msg => {
   if(msg.type === 'create-frame'){
     const heading_font = msg.heading_font;
     const body_font = msg.body_font;
+
     const background_color = msg.background_color;
-    const text_color = msg.text_color;
+    const heading_rgb = msg.heading_color;
+    const body_rgb = msg.body_color;
+
     const heading_content = msg.heading_content;
     const body_content = msg.body_content;
 
@@ -78,15 +81,15 @@ figma.ui.onmessage = msg => {
       body.fontName = ({ family: `${body_font}`, style: "Regular" });
 
       const heading_color = clone(heading.fills);
-      heading_color[0].color.r = text_color[0]/255;
-      heading_color[0].color.g = text_color[1]/255;
-      heading_color[0].color.b = text_color[2]/255;
+      heading_color[0].color.r = heading_rgb[0]/255;
+      heading_color[0].color.g = heading_rgb[1]/255;
+      heading_color[0].color.b = heading_rgb[2]/255;
       heading.fills = heading_color
 
       const body_color = clone(body.fills);
-      body_color[0].color.r = text_color[0]/255;
-      body_color[0].color.g = text_color[1]/255;
-      body_color[0].color.b = text_color[2]/255;
+      body_color[0].color.r = body_rgb[0]/255;
+      body_color[0].color.g = body_rgb[1]/255;
+      body_color[0].color.b = body_rgb[2]/255;
       body.fills = body_color;
 
       const frame_color = clone(frame.fills);
@@ -125,6 +128,9 @@ figma.ui.onmessage = msg => {
       frame.appendChild(heading);
       frame.appendChild(body);
       nodes.push(frame, heading);
+
+      figma.currentPage.selection = nodes;
+      figma.viewport.scrollAndZoomIntoView(nodes);
 
     }
 

@@ -32,6 +32,22 @@
   <input type="text" id="text-color" name="text-color" maxlength="6" value="FFFFFF" style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; border-right: 1px solid lightgrey; border-left: 0px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; width: 70px; padding: 3px 0px 3px 0px;" oninput="javascript:color('text-color', 'text')">
 </div>
 
+<p style="margin-bottom: 5px; font-family:Arial, Helvetica, sans-serif; font-weight: 700; font-size: 12px;">Heading Color</p>
+<div style="display: flex; flex-direction: row; width: 105px; height: 28px;">
+  <input type="color" id="heading-color-mini-display" style="background-color: #ffffff; width: 24px; height: 28px; border: 1px solid lightgrey; border-right: none; border-top-left-radius: 5px; border-bottom-left-radius: 5px; padding: 0px; padding-left: 2px"  value="#ffffff" oninput="javascript:colorPickerColor('heading-color-mini-display', 'heading')">
+  <!-- </div> -->
+  <span style="padding: 3px 1px 3px 4px; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey;"> #</span>
+  <input type="text" id="heading-color" name="heading-color" maxlength="6" value="FFFFFF" style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; border-right: 1px solid lightgrey; border-left: 0px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; width: 70px; padding: 3px 0px 3px 0px;" oninput="javascript:color('heading-color', 'heading')">
+</div>
+
+<p style="margin-bottom: 5px; font-family:Arial, Helvetica, sans-serif; font-weight: 700; font-size: 12px;">Body Color</p>
+<div style="display: flex; flex-direction: row; width: 105px; height: 28px;">
+  <input type="color" id="body-color-mini-display" style="background-color: #ffffff; width: 24px; height: 28px; border: 1px solid lightgrey; border-right: none; border-top-left-radius: 5px; border-bottom-left-radius: 5px; padding: 0px; padding-left: 2px"  value="#ffffff" oninput="javascript:colorPickerColor('body-color-mini-display', 'body')">
+  <!-- </div> -->
+  <span style="padding: 3px 1px 3px 4px; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey;"> #</span>
+  <input type="text" id="body-color" name="background-color" maxlength="6" value="FFFFFF" style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; border-right: 1px solid lightgrey; border-left: 0px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; width: 70px; padding: 3px 0px 3px 0px;" oninput="javascript:color('body-color', 'body')">
+</div>
+
 <p style="margin-bottom: 5px; font-family:Arial, Helvetica, sans-serif; font-weight: 700; font-size: 12px;">Background Color</p>
 
 <div style="display: flex; flex-direction: row; width: 105px; height: 28px;">
@@ -41,7 +57,9 @@
   <input type="text" id="background-color" name="background-color" maxlength="6" value="333333" style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; border-right: 1px solid lightgrey; border-left: 0px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; width: 70px; padding: 3px 0px 3px 0px;" oninput="javascript:color('background-color', 'background')">
 </div>
 
-<button id="frame" style="margin-top: 60px; color: black; background-color: white; border: 1px solid lightgrey; padding: 4px; border-radius: 5px; width: 86px;" onclick="makeFrame();">Use Pairing</button>
+
+
+<button id="frame" style="margin-top: 20px; color: white; background-color: #04cd00; border: 1px solid lightgrey; padding: 4px; border-radius: 5px; width: 86px;" onclick="makeFrame();">Use Pairing</button>
 
 </div>
 
@@ -53,18 +71,20 @@
 
 style="position: fixed; font-size: 12px; font-weight: 700; margin: -78px -97px 25px -97px; display: flex; flex-direction: row; background: white; color: black; justify-content: space-evenly; font-family: sans-serif; ">
   
-  <div class="tab" id="left-tab" style="padding: 5px 10px; width: 160px; background-color: lightgrey; border-right: 1px solid grey; border-bottom: 3px solid blue;" onclick="javascript:changeTabs('left-tab')">
-    find pairing
+  <div class="tab" id="left-tab" style="padding: 5px 10px; width: 160px; background-color: lightgrey; border-right: 1px solid grey; border-bottom: 3px solid #1F96EE;" onclick="javascript:changeTabs('left-tab')">
+    Find Pairing
   </div>
 
-  <div class="tab" id="mid-tab" style="padding: 5px 10px; width: 161px; border-right: 1px solid grey; border-bottom: 3px solid white" onclick="javascript:changeTabs('mid-tab')">
-    all pairings
+  <div class="tab" id="middle-tab" style="border-right: 1px solid grey; padding: 5px 10px; width: 161px; border-bottom: 3px solid white;" onclick="javascript:changeTabs('middle-tab')">
+    Font Family
+  </div>
+
+  <div class="tab" id="right-tab" style="padding: 5px 10px; width: 161px; border-bottom: 3px solid white" onclick="javascript:changeTabs('right-tab')">
+    All Pairings
   </div>
   
 
-  <div class="tab" id="right-tab" style="padding: 5px 10px; width: 161px; border-bottom: 3px solid white;" onclick="javascript:changeTabs('right-tab')">
-    all fonts
-  </div>
+
 </div>
 
 <div id="test-pairings">
@@ -78,7 +98,7 @@ style="position: fixed; font-size: 12px; font-weight: 700; margin: -78px -97px 2
       role="textbox" 
       contenteditable
         99 style="font-size: 36px; padding-bottom: 20px; font-weight: 700; flex-direction: column; word-wrap:break-word; width: 350px">
-    Cliiiick "New Pairing" to shuffle through pairings
+    Click "New Pairing" to shuffle through pairings
     </div>
   </div>
 
@@ -95,7 +115,7 @@ style="position: fixed; font-size: 12px; font-weight: 700; margin: -78px -97px 2
   </div>
 </div>
 
-<div id="all-pairings" style="display:  none;">
+<div id="all-pairings" style="display: none; width: 500px; margin-left: -80px;">
 </div>
 
 <div id="all-fonts" style="display: none;">
@@ -112,10 +132,10 @@ style="position: fixed; font-size: 12px; font-weight: 700; margin: -78px -97px 2
 
 </div>
 
-<div style="color: white; background-color: #333333; width: 350px; padding: 0px 96px 30px 96px; border: 1px solid #333333; font-family: sans-serif; display: flex; flex-direction: row; justify-content: space-evenly;">
-  <a id="heading-link" style="padding-left: 25px; text-decoration: none; color: white" href="https://www.fontpair.co/fonts/epilogue">Epilogue</a>
-  <a id="body-link" style="padding-left: 25px; text-decoration: none; color: white" href="https://www.fontpair.co/fonts/inter">Inter</a>
-  <a id="pairing-link" style="padding-left: 25px; text-decoration: none; color: white" href="https://www.fontpair.co/pairings/epilogueinter">View pairing</a>
+<div id="links-bar"  style="cursor: pointer; color: white; background-color: #333333; width: 350px; padding: 0px 97px 30px 97px; font-family: sans-serif; display: flex; flex-direction: row; justify-content: space-evenly; margin-top: -20px">
+  <p id="heading-link" style="text-decoration: none; color: white">Epilogue</p>
+  <p id="body-link" style="padding-left: 25px; text-decoration: none; color: white" >Inter</p>
+  <!-- <p id="pairing-link" style="padding-left: 25px; text-decoration: none; color: white">View pairing</p> -->
 </div>
 
 </div>
@@ -125,138 +145,273 @@ style="position: fixed; font-size: 12px; font-weight: 700; margin: -78px -97px 2
 
 </section>
 
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script> -->
 
 <script>
 
-// // const loadFonts = async () => {
-//     // const font = new FontFace('Yellowtail', 'url(https://fonts.gstatic.com/s/yellowtail/v18/OZpGg_pnoDtINPfRIlLohlvHwQ.woff2)');
-//     // // wait for font to be loaded
-//     // console.log("loadfonts1", font);
-//     // console.log("flfl", font.load())
-//     // await font.load();
+let api_key = "AIzaSyD2L82Qos-RaIyvckkQtpLhgQhl1f2x8bE";
 
-//     // }
-
-//     // loadFonts().then(() => {
-//     //   // setStartFont(families[0], families[1]);
-//     //   var newStyle = document.createElement('style');
-//     //   newStyle.appendChild(document.createTextNode("\
-//     //   @font-face {\
-//     //       font-family: " + "Droid Sans" + ";\
-//     //       src: url('" + "..." + "') format('yourFontFormat');\
-//     //   }\
-//     //   "));
-//     //   document.head.appendChild(newStyle);
-//     //   console.log("active", WebFontConfig.fontloading("Droid Sans"))
-//     // })
-//     // loadFonts().catch(() => {
-//     //   loadFail();
-//     // })
-
-//     function loadFail () {
-//     console.log("FAIL");
-//     }
-
-// // WebFontConfig = {
-// //   loading: function() {}
-// //   // active: function() {},
-// //   // inactive: function() {},
-// //   // fontloading: function(familyName, fvd) {},
-// //   // fontactive: function(familyName, fvd) {},
-// //   // fontinactive: function(familyName, fvd) {}
-// // };
-
-// // try {
-// //     webFont.load({
-// //       loading: function() {
-// //         // JavaScript to execute when fonts start loading
-// //         console.log("loading")
-// //       },
-// //       active: function() {
-// //         // JavaScript to execute when fonts become active
-// //         console.log("active")
-
-// //       },
-// //       inactive: function() {
-// //         // JavaScript to execute when fonts become inactive
-// //         console.log("inactive")
-// //       }
-// //     })
-// //   } catch(e) {}
-
-// // console.log(WebFont.load);
-// // console.log(WebFont.loading);
-// // console.log(WebFont.active);
-
-// // try {
-// WebFont.load({
-//     google: {
-//       families: ['Yellowtail'],
-//       // urls: [
-//       //               'https://fonts.googleapis.com/css?family=Inter'
-//       //           ],
-//     },
-
-//     loading: doLoading,
-//     // function() {
-//     //   // JavaScript to execute when fonts start loading
-//     //   console.log("loading");
-//     // },
-//       active: doActive,
-//       // function() {
-//       //   // JavaScript to execute when fonts become active
-//       //   console.log("active")
-
-//       // },
-//       inactive: doInactive,
-//       // function() {
-//       //   // JavaScript to execute when fonts become inactive
-//       //   console.log("inactive")
-//       //   //  return 5;
-//       // },
-//       // fontinactive: function() {
-//       //   // JavaScript to execute when fonts become inactive
-//       //   console.log("font inactive")
-//       // }
-// });
-// // } catch(e) {console.log("fail")}
-
-// var newStyle = document.createElement('style');
-//       newStyle.appendChild(document.createTextNode("\
-//       @font-face {\
-//           font-family: " + "Droid Sans" + ";\
-//           src: 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';\
-//       }\
-//       "));
-//       document.head.appendChild(newStyle);
-//       document.getElementById("heading-display").style.fontFamily = "Droid Sans";
-
-// function doLoading () {
-//   console.log("loading")
-
-// }
-
-// function doActive () {
-//   console.log("active")
-
-// }
-
-// function doInactive () {
-//   console.log("inactive", WebFont.load.google)
-// }
-
-
-
-
-// WebFont.load({
-//     google: {
-//       families: ['Droid Sans', 'Droid Sans']
-//     }
-//   });
 
 //list of all fonts used in plugin, list is in pairs that will be randomly selected together for display
-let list = `Abril Fatface & Poppins, Abril Fatface & Josefin Sans, Abril Fatface & Lato, Abril Fatface & Poppins, Alegreya Sans & Alegreya, Alegreya & Source Sans Pro, Alegreya & Alegreya, Alegreya & Alegreya Sans, Alegreya & Nunito, Alegreya & Source Sans Pro, Alegreya Sans & Alegreya, Alfa Slab One & Gentium Book Basic, Alike Angular & Epilogue, Amatic SC & Andika, Anton & Roboto, Anton & Signika, Archivo & Tenor Sans, Archivo & Roboto, Archivo Black & Archivo, Archivo Black & Inter, Archivo Black & Tenor Sans, Arima Madurai & Mulish, Arvo & Lato, Arvo & Lato, Arvo & Lato, Arvo & Montserrat, Bai Jamjuree & K2D, Barlow Condensed & Montserrat, Barlow & Barlow Semi Condensed, BioRhyme & Varela, Bitter & Raleway, Bitter & Open Sans, Bitter & Raleway, Bodoni Moda & Karla, Bree Serif & Alegreya, Bubblegum Sans & Open Sans, Cabin & Cabin, Cabin & Raleway, Cardo & Hind, Cardo & Josefin Sans, Cardo & Libre Franklin, Cardo & Pathway Gothic One, Cardo & Josefin Sans, Catamaran & Merriweather, Chakra Petch & Padauk, Changa & Alice, Chivo & Chivo, Chivo & Crimson Text, Chivo & Rosario, Cinzel & Fauna One, Cinzel & PT Serif, Corben & Source Sans Pro, Cormorant & Fira Sans, Cormorant & Open Sans, Cormorant & Proza Libre, Cormorant Garamond & Proza Libre, Cormorant & Amiko, Darker Grotesque & Space Mono, Della Respira & Open Sans, DM Serif Display & DM Sans, DM Serif Display & Red Hat Display, DM Serif Text & DM Sans, Domine & Open Sans, Dosis & Titillium Web, Droid Sans & Ubuntu, EB Garamond & Montserrat, EB Garamond & Spline Sans, EB Garamond & EB Garamond, Eczar & Gentium Basic, Eczar & Merriweather, Eczar & Work Sans, Eczar & Varta, Elsie & Open Sans, Emblema One & Palanquin, Epilogue & Epilogue, Expletus Sans & Hind, Fahkwang & Taviraj, Fanwood Text & Fanwood Text, Fira Mono & Fira Sans, Fjalla One & Cantarell, Fjalla One & Inter, Fjalla One & Nunito, Fjalla One & Cantarell, Fjalla One & Libre Baskerville, Fjalla One & Lora, Forum & Work Sans, Francois One & Lato, Fugaz One & Work Sans, Gilda Display & Jomolhari, Goudy Bookletter 1911 & Average Sans, Grand Hotel & Lato, Grenze Gotisch & Manuale, Halant & Nunito Sans, Halant & Nunito Sans, Hind & Open Sans, IBM Plex Sans Condensed & IBM Plex Sans, IBM Plex Serif & Gothic A1, IBM Plex Serif & IBM Plex Sans, Inter & Playfair Display, Inter & Inter, Inter & Raleway, Istok Web & Average, Istok Web & Inter, Josefin Sans & Inter, Josefin Sans & Open Sans, Josefin Sans & Poppins, Josefin Sans & Cardo, Josefin Sans & Fira Mono, Josefin Sans & Lato, Josefin Slab & Josefin Sans, Julius Sans One & Monda, Junge & Lora, Karla & IBM Plex Mono, Karla & Inconsolata, Karla & Karla, Karla & Merriweather, Karla & Karla, Karla & Lato, Kreon & Ubuntu, Kreon & Inter, Lato & Catamaran, Lato & Karla, Lato & Merriweather, Libre Baskerville & Montserrat, Libre Baskerville & Nunito, Libre Baskerville & Raleway, Libre Baskerville & Source Sans Pro, Libre Baskerville & Libre Baskerville, Libre Baskerville & Libre Franklin, Libre Baskerville & Source Sans Pro, Libre Franklin & Libre Baskerville, Lobster Two & Cormorant Garamond, Lora & DM Sans, Lora & Inter, Lora & Merriweather, Lora & Roboto, Lora & Lora, Lora & Nunito, Lora & Source Sans Pro, Lora & Ubuntu, Lora & Varela Round, Lustria & Lato, Lustria & Mulish, Marmelad & Brawler, Maven Pro & Maven Pro, Merriweather & Muli, Merriweather & Source Sans Pro, Merriweather & Merriweather, Merriweather & Lato, Merriweather & Lora, Merriweather & Merriweather Sans, Merriweather & Raleway, Merriweather Sans & Merriweather, Merriweather & Oswald, Montserrat & Cardo, Montserrat & Crimson Text, Montserrat & Hind, Montserrat & Lato, Montserrat & Open Sans, Montserrat & Outfit, Montserrat & Source Sans Pro, Montserrat & Montserrat, Montserrat & Arvo, Montserrat & Cabin, Montserrat & Fira Sans, Montserrat & Inconsolata, Montserrat & Karla, Montserrat & Montserrat, Montserrat & Open Sans, Montserrat & Source Sans Pro, Montserrat & Oswald, Montserrat & Merriweather, Mulish & Inter, Mulish & Open Sans, Mulish & Roboto, Mulish & Rubik, Mulish & Space Mono, Neuton & Neuton, Neuton & Work Sans, Neuton & Lato, Nixie One & Ledger, Noto Sans & Noto Sans, Noto Serif & Noto Sans, Noto Serif & Noto Serif, Nunito & Nunito Sans, Nunito & Nunito Sans, Nunito & PT Sans, Nunito & Lora, Nunito & Nunito, Nunito & Open Sans, Nunito & PT Sans, Nunito & Roboto, Nunito Sans & Nunito Sans, Old Standard TT & Mulish, Old Standard TT & Rubik, Old Standard TT & Merriweather, Open Sans & Average Sans, Open Sans & Crimson Text, Open Sans & Domine, Open Sans & Montserrat, Open Sans & Raleway, Open Sans & Source Sans Pro, Open Sans & Open Sans, Open Sans & Open Sans, Orelega One & Montserrat, Oswald & Esteban, Oswald & Lora, Oswald & Merriweather, Oswald & Quattrocento, Oswald & Quicksand, Oswald & Roboto, Oswald & Source Sans Pro, Oswald & Source Serif Pro, Oswald & Arvo, Oswald & EB Garamond, Oswald & Montserrat, Outfit & Inter, Outfit & Montserrat, Outfit & Outfit, Outfit & Outfit, Overpass & Overpass, Overpass Mono & Alike, Ovo & Quattrocento Sans, Ovo & Gothic A1, Oxygen & Noto Serif, Oxygen & Source Sans Pro, Pathway Gothic One & Glegoo, Patua One & Maven Pro, Permanent Marker & Overpass, Permanent Marker & Inter, Philosopher & Mulish, Philosopher & Muli, Playfair Display & Alice, Playfair Display & DM Sans, Playfair Display & Lato, Playfair Display & Proza Libre, Playfair Display & Quattrocento, Playfair Display & Quattrocento Sans, Playfair Display & Raleway, Playfair Display & Source Sans Pro, Playfair Display & Source Sans Pro, Playfair Display & Fira Sans, Playfair Display & Josefin Sans, Playfair Display & Libre Baskerville, Playfair Display & Lora, Playfair Display & Source Sans Pro, Poiret One & Lato, Poiret One & Montserrat, Poiret One & Open Sans, Poppins & Lora, Prata & Lato, Prompt & Inter, Prompt & Open Sans, Prompt & Ubuntu, Prompt & Anonymous Pro, PT Sans & Bitter, PT Sans & Cabin, PT Sans & Playfair Display, PT Sans & Cabin, PT Sans & Raleway, PT Sans Narrow & PT Sans, Quattrocento & Fanwood Text, Quattrocento & Lora, Quattrocento & Quattrocento Sans, Quattrocento & Quattrocento, Quattrocento Sans & Quattrocento Sans, Questrial & Alegreya, Quicksand & Quicksand, Quicksand & Quicksand, Quicksand & Quicksand, Raleway & Frank Ruhl Libre, Raleway & Open Sans, Raleway & Cabin, Raleway & Inter, Raleway & Merriweather, Raleway & Open Sans, Raleway & PT Sans, Raleway & Roboto, Raleway & Lato, Roboto & Droid Sans, Roboto & Inter, Roboto & Lora, Roboto & Nunito, Roboto & Roboto, Roboto & Archivo, Roboto & Lora, Roboto & Nunito, Roboto & Raleway, Roboto & Roboto, Roboto Condensed & Cabin, Roboto Condensed & Cabin, Roboto Condensed & Inter, Roboto Condensed & Roboto, Roboto Condensed & Cabin, Roboto Condensed & Inter, Roboto Condensed & Vollkorn, Roboto Mono & Roboto, Roboto Slab & Roboto, Roboto Slab & Neuton, Roboto Slab & Roboto, Rokkitt & Roboto, Rokkitt & Ubuntu, Rosario & Crimson Text, Rozha One & Questrial, Rubik & Libre Baskerville, Rubik & Roboto Mono, Rubik & Rubik, Rubik & Cousine, Ruda & Roboto Slab, Rufina & Average Sans, Rufina & Oxygen, Rufina & PT Serif, Sacramento & Alice, Sacramento & Alice, Sancreek & Goudy Bookletter 1911, Scheherazade & Harmattan, Shrikhand & Fanwood Text, Sintony & Poppins, Six Caps & Inter, Six Caps & Merriweather, Six Caps & Cardo, Slabo 27px & Lato, Source Sans Pro & Open Sans, Source Sans Pro & Sintony, Source Sans Pro & Source Serif Pro, Source Sans Pro & Lora, Source Sans Pro & Montserrat, Source Sans Pro & Source Sans Pro, Source Sans Pro & Ubuntu, Source Serif Pro & Source Sans Pro, Source Serif Pro & Source Sans Pro, Space Mono & Bitter, Space Mono & Roboto, Space Mono & Space Mono, Spectral & Karla, Spline Sans & Spline Sans, Squada One & Libre Baskerville, Stick No Bills & Pontano Sans, Stint Ultra Expanded & Pontano Sans, Syne & Inter, Syne & Fira Mono, Syne & Inter, Syne & Open Sans, Teko & Ubuntu, Tenor Sans & Archivo Narrow, Trirong & Rubik, Ubuntu & Open Sans, Ubuntu & Cabin, Ubuntu & Source Sans Pro, Ultra & PT Serif, Ultra & Slabo 27px, Unica One & Crimson Text, Unica One & Inter, Uchen & Slabo 27px, Varela & Noto Serif, Varela Round & Lora, Varela Round & Gelasio, Vollkorn & Raleway, Vollkorn & Roboto, Work Sans & Merriweather, Work Sans & Open Sans, Work Sans & Taviraj, Work Sans & Work Sans, Work Sans & Crimson Text, Yatra One & Hind, Yellowtail & Lato, Yeseva One & Josefin Sans, Yeseva One & Josefin Sans, Zilla Slab & Inter`
+let list = `Abril Fatface & Poppins, Abril Fatface & Josefin Sans, Abril Fatface & Lato, Abril Fatface & Poppins, Alegreya Sans & Alegreya, Alegreya & Source Sans Pro, Alegreya & Alegreya, Alegreya & Alegreya Sans, Alegreya & Nunito, Alegreya & Source Sans Pro, Alegreya Sans & Alegreya, Alfa Slab One & Gentium Book Basic, Alike Angular & Epilogue, Amatic SC & Andika, Anton & Roboto, Anton & Signika, Archivo & Tenor Sans, Archivo & Roboto, Archivo Black & Archivo, Archivo Black & Inter, Archivo Black & Tenor Sans, Arima Madurai & Mulish, Arvo & Lato, Arvo & Lato, Arvo & Lato, Arvo & Montserrat, Bai Jamjuree & K2D, Barlow Condensed & Montserrat, Barlow & Barlow Semi Condensed, BioRhyme & Varela, Bitter & Raleway, Bitter & Open Sans, Bitter & Raleway, Bodoni Moda & Karla, Bree Serif & Alegreya, Bubblegum Sans & Open Sans, Cabin & Cabin, Cabin & Raleway, Cardo & Hind, Cardo & Josefin Sans, Cardo & Libre Franklin, Cardo & Pathway Gothic One, Cardo & Josefin Sans, Catamaran & Merriweather, Chakra Petch & Padauk, Changa & Alice, Chivo & Chivo, Chivo & Crimson Text, Chivo & Rosario, Cinzel & Fauna One, Cinzel & PT Serif, Corben & Source Sans Pro, Cormorant & Fira Sans, Cormorant & Open Sans, Cormorant & Proza Libre, Cormorant Garamond & Proza Libre, Cormorant & Amiko, Darker Grotesque & Space Mono, Della Respira & Open Sans, DM Serif Display & DM Sans, DM Serif Display & Red Hat Display, DM Serif Text & DM Sans, Domine & Open Sans, Dosis & Titillium Web, EB Garamond & Montserrat, EB Garamond & Spline Sans, EB Garamond & EB Garamond, Eczar & Gentium Book Basic, Eczar & Merriweather, Eczar & Work Sans, Eczar & Varta, Elsie & Open Sans, Emblema One & Palanquin, Epilogue & Epilogue, Expletus Sans & Hind, Fahkwang & Taviraj, Fanwood Text & Fanwood Text, Fira Mono & Fira Sans, Fjalla One & Cantarell, Fjalla One & Inter, Fjalla One & Nunito, Fjalla One & Cantarell, Fjalla One & Libre Baskerville, Fjalla One & Lora, Forum & Work Sans, Francois One & Lato, Fugaz One & Work Sans, Gilda Display & Jomolhari, Goudy Bookletter 1911 & Average Sans, Grand Hotel & Lato, Grenze Gotisch & Manuale, Halant & Nunito Sans, Halant & Nunito Sans, Hind & Open Sans, IBM Plex Sans Condensed & IBM Plex Sans, IBM Plex Serif & Gothic A1, IBM Plex Serif & IBM Plex Sans, Inter & Playfair Display, Inter & Inter, Inter & Raleway, Istok Web & Average, Istok Web & Inter, Josefin Sans & Inter, Josefin Sans & Open Sans, Josefin Sans & Poppins, Josefin Sans & Cardo, Josefin Sans & Fira Mono, Josefin Sans & Lato, Josefin Slab & Josefin Sans, Julius Sans One & Monda, Junge & Lora, Karla & IBM Plex Mono, Karla & Inconsolata, Karla & Karla, Karla & Merriweather, Karla & Karla, Karla & Lato, Kreon & Ubuntu, Kreon & Inter, Lato & Catamaran, Lato & Karla, Lato & Merriweather, Libre Baskerville & Montserrat, Libre Baskerville & Nunito, Libre Baskerville & Raleway, Libre Baskerville & Source Sans Pro, Libre Baskerville & Libre Baskerville, Libre Baskerville & Libre Franklin, Libre Baskerville & Source Sans Pro, Libre Franklin & Libre Baskerville, Lobster Two & Cormorant Garamond, Lora & DM Sans, Lora & Inter, Lora & Merriweather, Lora & Roboto, Lora & Lora, Lora & Nunito, Lora & Source Sans Pro, Lora & Ubuntu, Lora & Varela Round, Lustria & Lato, Lustria & Mulish, Marmelad & Brawler, Maven Pro & Maven Pro, Merriweather & Mulish, Merriweather & Source Sans Pro, Merriweather & Merriweather, Merriweather & Lato, Merriweather & Lora, Merriweather & Merriweather Sans, Merriweather & Raleway, Merriweather Sans & Merriweather, Merriweather & Oswald, Montserrat & Cardo, Montserrat & Crimson Text, Montserrat & Hind, Montserrat & Lato, Montserrat & Open Sans, Montserrat & Outfit, Montserrat & Source Sans Pro, Montserrat & Montserrat, Montserrat & Arvo, Montserrat & Cabin, Montserrat & Fira Sans, Montserrat & Inconsolata, Montserrat & Karla, Montserrat & Montserrat, Montserrat & Open Sans, Montserrat & Source Sans Pro, Montserrat & Oswald, Montserrat & Merriweather, Mulish & Inter, Mulish & Open Sans, Mulish & Roboto, Mulish & Rubik, Mulish & Space Mono, Neuton & Neuton, Neuton & Work Sans, Neuton & Lato, Nixie One & Ledger, Noto Sans & Noto Sans, Noto Serif & Noto Sans, Noto Serif & Noto Serif, Nunito & Nunito Sans, Nunito & Nunito Sans, Nunito & PT Sans, Nunito & Lora, Nunito & Nunito, Nunito & Open Sans, Nunito & PT Sans, Nunito & Roboto, Nunito Sans & Nunito Sans, Old Standard TT & Mulish, Old Standard TT & Rubik, Old Standard TT & Merriweather, Open Sans & Average Sans, Open Sans & Crimson Text, Open Sans & Domine, Open Sans & Montserrat, Open Sans & Raleway, Open Sans & Source Sans Pro, Open Sans & Open Sans, Open Sans & Open Sans, Orelega One & Montserrat, Oswald & Esteban, Oswald & Lora, Oswald & Merriweather, Oswald & Quattrocento, Oswald & Quicksand, Oswald & Roboto, Oswald & Source Sans Pro, Oswald & Source Serif Pro, Oswald & Arvo, Oswald & EB Garamond, Oswald & Montserrat, Outfit & Inter, Outfit & Montserrat, Outfit & Outfit, Outfit & Outfit, Overpass & Overpass, Overpass Mono & Alike, Ovo & Quattrocento Sans, Ovo & Gothic A1, Oxygen & Noto Serif, Oxygen & Source Sans Pro, Pathway Gothic One & Glegoo, Patua One & Maven Pro, Permanent Marker & Overpass, Permanent Marker & Inter, Philosopher & Mulish, Philosopher & Mulish, Playfair Display & Alice, Playfair Display & DM Sans, Playfair Display & Lato, Playfair Display & Proza Libre, Playfair Display & Quattrocento, Playfair Display & Quattrocento Sans, Playfair Display & Raleway, Playfair Display & Source Sans Pro, Playfair Display & Source Sans Pro, Playfair Display & Fira Sans, Playfair Display & Josefin Sans, Playfair Display & Libre Baskerville, Playfair Display & Lora, Playfair Display & Source Sans Pro, Poiret One & Lato, Poiret One & Montserrat, Poiret One & Open Sans, Poppins & Lora, Prata & Lato, Prompt & Inter, Prompt & Open Sans, Prompt & Ubuntu, Prompt & Anonymous Pro, PT Sans & Bitter, PT Sans & Cabin, PT Sans & Playfair Display, PT Sans & Cabin, PT Sans & Raleway, PT Sans Narrow & PT Sans, Quattrocento & Fanwood Text, Quattrocento & Lora, Quattrocento & Quattrocento Sans, Quattrocento & Quattrocento, Quattrocento Sans & Quattrocento Sans, Questrial & Alegreya, Quicksand & Quicksand, Quicksand & Quicksand, Quicksand & Quicksand, Raleway & Frank Ruhl Libre, Raleway & Open Sans, Raleway & Cabin, Raleway & Inter, Raleway & Merriweather, Raleway & Open Sans, Raleway & PT Sans, Raleway & Roboto, Raleway & Lato, Roboto & Inter, Roboto & Lora, Roboto & Nunito, Roboto & Roboto, Roboto & Archivo, Roboto & Lora, Roboto & Nunito, Roboto & Raleway, Roboto & Roboto, Roboto Condensed & Cabin, Roboto Condensed & Cabin, Roboto Condensed & Inter, Roboto Condensed & Roboto, Roboto Condensed & Cabin, Roboto Condensed & Inter, Roboto Condensed & Vollkorn, Roboto Mono & Roboto, Roboto Slab & Roboto, Roboto Slab & Neuton, Roboto Slab & Roboto, Rokkitt & Roboto, Rokkitt & Ubuntu, Rosario & Crimson Text, Rozha One & Questrial, Rubik & Libre Baskerville, Rubik & Roboto Mono, Rubik & Rubik, Rubik & Cousine, Ruda & Roboto Slab, Rufina & Average Sans, Rufina & Oxygen, Rufina & PT Serif, Sacramento & Alice, Sacramento & Alice, Sancreek & Goudy Bookletter 1911, Shrikhand & Fanwood Text, Sintony & Poppins, Six Caps & Inter, Six Caps & Merriweather, Six Caps & Cardo, Slabo 27px & Lato, Source Sans Pro & Open Sans, Source Sans Pro & Sintony, Source Sans Pro & Source Serif Pro, Source Sans Pro & Lora, Source Sans Pro & Montserrat, Source Sans Pro & Source Sans Pro, Source Sans Pro & Ubuntu, Source Serif Pro & Source Sans Pro, Source Serif Pro & Source Sans Pro, Space Mono & Bitter, Space Mono & Roboto, Space Mono & Space Mono, Spectral & Karla, Spline Sans & Spline Sans, Squada One & Libre Baskerville, Stick No Bills & Pontano Sans, Stint Ultra Expanded & Pontano Sans, Syne & Inter, Syne & Fira Mono, Syne & Inter, Syne & Open Sans, Teko & Ubuntu, Tenor Sans & Archivo Narrow, Trirong & Rubik, Ubuntu & Open Sans, Ubuntu & Cabin, Ubuntu & Source Sans Pro, Ultra & PT Serif, Ultra & Slabo 27px, Unica One & Crimson Text, Unica One & Inter, Uchen & Slabo 27px, Varela & Noto Serif, Varela Round & Lora, Varela Round & Gelasio, Vollkorn & Raleway, Vollkorn & Roboto, Work Sans & Merriweather, Work Sans & Open Sans, Work Sans & Taviraj, Work Sans & Work Sans, Work Sans & Crimson Text, Yatra One & Hind, Yellowtail & Lato, Yeseva One & Josefin Sans, Yeseva One & Josefin Sans, Zilla Slab & Inter`
+
+let font_weights_start = {
+  'Abril Fatface': {'variants': ['regular'], 'category': 'display'} ,
+'Alegreya': {'variants': ['regular', '500', '600', '700', '800', '900', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'serif'} ,
+'Alegreya Sans': {'variants': ['100', '100italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Alfa Slab One': {'variants': ['regular'], 'category': 'display'} ,
+'Alice': {'variants': ['regular'], 'category': 'serif'} ,
+'Alike': {'variants': ['regular'], 'category': 'serif'} ,
+'Alike Angular': {'variants': ['regular'], 'category': 'serif'} ,
+'Amatic SC': {'variants': ['regular', '700'], 'category': 'handwriting'} ,
+'Amiko': {'variants': ['regular', '600', '700'], 'category': 'sans-serif'} ,
+'Andika': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Anonymous Pro': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'monospace'} ,
+'Anton': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Archivo': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Archivo Black': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Archivo Narrow': {'variants': ['regular', '500', '600', '700', 'italic', '500italic', '600italic', '700italic'], 'category': 'sans-serif'} ,
+'Arima Madurai': {'variants': ['100', '200', '300', 'regular', '500', '700', '800', '900'], 'category': 'display'} ,
+'Arvo': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'serif'} ,
+'Average': {'variants': ['regular'], 'category': 'serif'} ,
+'Average Sans': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Bai Jamjuree': {'variants': ['200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Barlow': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Barlow Condensed': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Barlow Semi Condensed': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'BioRhyme': {'variants': ['200', '300', 'regular', '700', '800'], 'category': 'serif'} ,
+'Bitter': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'serif'} ,
+'Bodoni Moda': {'variants': ['regular', '500', '600', '700', '800', '900', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'serif'} ,
+'Brawler': {'variants': ['regular', '700'], 'category': 'serif'} ,
+'Bree Serif': {'variants': ['regular'], 'category': 'serif'} ,
+'Bubblegum Sans': {'variants': ['regular'], 'category': 'display'} ,
+'Cabin': {'variants': ['regular', '500', '600', '700', 'italic', '500italic', '600italic', '700italic'], 'category': 'sans-serif'} ,
+'Cantarell': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Cardo': {'variants': ['regular', 'italic', '700'], 'category': 'serif'} ,
+'Catamaran': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900'], 'category': 'sans-serif'} ,
+'Chakra Petch': {'variants': ['300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Changa': {'variants': ['200', '300', 'regular', '500', '600', '700', '800'], 'category': 'sans-serif'} ,
+'Chivo': {'variants': ['300', '300italic', 'regular', 'italic', '700', '700italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Cinzel': {'variants': ['regular', '500', '600', '700', '800', '900'], 'category': 'serif'} ,
+'Corben': {'variants': ['regular', '700'], 'category': 'display'} ,
+'Cormorant': {'variants': ['300', 'regular', '500', '600', '700', '300italic', 'italic', '500italic', '600italic', '700italic'], 'category': 'serif'} ,
+'Cormorant Garamond': {'variants': ['300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'serif'} ,
+'Cousine': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'monospace'} ,
+'Crimson Text': {'variants': ['regular', 'italic', '600', '600italic', '700', '700italic'], 'category': 'serif'} ,
+'DM Sans': {'variants': ['regular', 'italic', '500', '500italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'DM Serif Display': {'variants': ['regular', 'italic'], 'category': 'serif'} ,
+'DM Serif Text': {'variants': ['regular', 'italic'], 'category': 'serif'} ,
+'Darker Grotesque': {'variants': ['300', 'regular', '500', '600', '700', '800', '900'], 'category': 'sans-serif'} ,
+'Della Respira': {'variants': ['regular'], 'category': 'serif'} ,
+'Domine': {'variants': ['regular', '500', '600', '700'], 'category': 'serif'} ,
+'Dosis': {'variants': ['200', '300', 'regular', '500', '600', '700', '800'], 'category': 'sans-serif'} ,
+'EB Garamond': {'variants': ['regular', '500', '600', '700', '800', 'italic', '500italic', '600italic', '700italic', '800italic'], 'category': 'serif'} ,
+'Eczar': {'variants': ['regular', '500', '600', '700', '800'], 'category': 'serif'} ,
+'Elsie': {'variants': ['regular', '900'], 'category': 'display'} ,
+'Emblema One': {'variants': ['regular'], 'category': 'display'} ,
+'Epilogue': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Esteban': {'variants': ['regular'], 'category': 'serif'} ,
+'Expletus Sans': {'variants': ['regular', '500', '600', '700', 'italic', '500italic', '600italic', '700italic'], 'category': 'display'} ,
+'Fahkwang': {'variants': ['200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Fanwood Text': {'variants': ['regular', 'italic'], 'category': 'serif'} ,
+'Fauna One': {'variants': ['regular'], 'category': 'serif'} ,
+'Fira Mono': {'variants': ['regular', '500', '700'], 'category': 'monospace'} ,
+'Fira Sans': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Fjalla One': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Forum': {'variants': ['regular'], 'category': 'display'} ,
+'Francois One': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Frank Ruhl Libre': {'variants': ['300', 'regular', '500', '700', '900'], 'category': 'serif'} ,
+'Fugaz One': {'variants': ['regular'], 'category': 'display'} ,
+'Gelasio': {'variants': ['regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'serif'} ,
+'Gentium Book Basic': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'serif'} ,
+'Gilda Display': {'variants': ['regular'], 'category': 'serif'} ,
+'Glegoo': {'variants': ['regular', '700'], 'category': 'serif'} ,
+'Gothic A1': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900'], 'category': 'sans-serif'} ,
+'Goudy Bookletter 1911': {'variants': ['regular'], 'category': 'serif'} ,
+'Grand Hotel': {'variants': ['regular'], 'category': 'handwriting'} ,
+'Grenze Gotisch': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900'], 'category': 'display'} ,
+'Halant': {'variants': ['300', 'regular', '500', '600', '700'], 'category': 'serif'} ,
+'Harmattan': {'variants': ['regular', '700'], 'category': 'sans-serif'} ,
+'Hind': {'variants': ['300', 'regular', '500', '600', '700'], 'category': 'sans-serif'} ,
+'IBM Plex Mono': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'monospace'} ,
+'IBM Plex Sans': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'IBM Plex Sans Condensed': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'IBM Plex Serif': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'serif'} ,
+'Inconsolata': {'variants': ['200', '300', 'regular', '500', '600', '700', '800', '900'], 'category': 'monospace'} ,
+'Inter': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900'], 'category': 'sans-serif'} ,
+'Istok Web': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Jomolhari': {'variants': ['regular'], 'category': 'serif'} ,
+'Josefin Sans': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic'], 'category': 'sans-serif'} ,
+'Josefin Slab': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic'], 'category': 'serif'} ,
+'Julius Sans One': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Junge': {'variants': ['regular'], 'category': 'serif'} ,
+'K2D': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic'], 'category': 'sans-serif'} ,
+'Karla': {'variants': ['200', '300', 'regular', '500', '600', '700', '800', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic'], 'category': 'sans-serif'} ,
+'Kreon': {'variants': ['300', 'regular', '500', '600', '700'], 'category': 'serif'} ,
+'Lato': {'variants': ['100', '100italic', '300', '300italic', 'regular', 'italic', '700', '700italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Ledger': {'variants': ['regular'], 'category': 'serif'} ,
+'Libre Baskerville': {'variants': ['regular', 'italic', '700'], 'category': 'serif'} ,
+'Libre Franklin': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Lobster Two': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'display'} ,
+'Lora': {'variants': ['regular', '500', '600', '700', 'italic', '500italic', '600italic', '700italic'], 'category': 'serif'} ,
+'Lustria': {'variants': ['regular'], 'category': 'serif'} ,
+'Manuale': {'variants': ['300', 'regular', '500', '600', '700', '800', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic'], 'category': 'serif'} ,
+'Marmelad': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Maven Pro': {'variants': ['regular', '500', '600', '700', '800', '900'], 'category': 'sans-serif'} ,
+'Merriweather': {'variants': ['300', '300italic', 'regular', 'italic', '700', '700italic', '900', '900italic'], 'category': 'serif'} ,
+'Merriweather Sans': {'variants': ['300', 'regular', '500', '600', '700', '800', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic'], 'category': 'sans-serif'} ,
+'Monda': {'variants': ['regular', '700'], 'category': 'sans-serif'} ,
+'Montserrat': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Mulish': {'variants': ['200', '300', 'regular', '500', '600', '700', '800', '900', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Neuton': {'variants': ['200', '300', 'regular', 'italic', '700', '800'], 'category': 'serif'} ,
+'Nixie One': {'variants': ['regular'], 'category': 'display'} ,
+'Noto Sans': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Noto Serif': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'serif'} ,
+'Nunito': {'variants': ['200', '300', 'regular', '500', '600', '700', '800', '900', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Nunito Sans': {'variants': ['200', '200italic', '300', '300italic', 'regular', 'italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Old Standard TT': {'variants': ['regular', 'italic', '700'], 'category': 'serif'} ,
+'Open Sans': {'variants': ['300', 'regular', '500', '600', '700', '800', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic'], 'category': 'sans-serif'} ,
+'Orelega One': {'variants': ['regular'], 'category': 'display'} ,
+'Oswald': {'variants': ['200', '300', 'regular', '500', '600', '700'], 'category': 'sans-serif'} ,
+'Outfit': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900'], 'category': 'sans-serif'} ,
+'Overpass': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Overpass Mono': {'variants': ['300', 'regular', '500', '600', '700'], 'category': 'monospace'} ,
+'Ovo': {'variants': ['regular'], 'category': 'serif'} ,
+'Oxygen': {'variants': ['300', 'regular', '700'], 'category': 'sans-serif'} ,
+'PT Sans': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'PT Sans Narrow': {'variants': ['regular', '700'], 'category': 'sans-serif'} ,
+'PT Serif': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'serif'} ,
+'Padauk': {'variants': ['regular', '700'], 'category': 'sans-serif'} ,
+'Palanquin': {'variants': ['100', '200', '300', 'regular', '500', '600', '700'], 'category': 'sans-serif'} ,
+'Pathway Gothic One': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Patua One': {'variants': ['regular'], 'category': 'display'} ,
+'Permanent Marker': {'variants': ['regular'], 'category': 'handwriting'} ,
+'Philosopher': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Playfair Display': {'variants': ['regular', '500', '600', '700', '800', '900', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'serif'} ,
+'Poiret One': {'variants': ['regular'], 'category': 'display'} ,
+'Pontano Sans': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Poppins': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Prata': {'variants': ['regular'], 'category': 'serif'} ,
+'Prompt': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Proza Libre': {'variants': ['regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic'], 'category': 'sans-serif'} ,
+'Quattrocento': {'variants': ['regular', '700'], 'category': 'serif'} ,
+'Quattrocento Sans': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Questrial': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Quicksand': {'variants': ['300', 'regular', '500', '600', '700'], 'category': 'sans-serif'} ,
+'Raleway': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Red Hat Display': {'variants': ['300', 'regular', '500', '600', '700', '800', '900', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Roboto': {'variants': ['100', '100italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '700', '700italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Roboto Condensed': {'variants': ['300', '300italic', 'regular', 'italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Roboto Mono': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic'], 'category': 'monospace'} ,
+'Roboto Slab': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900'], 'category': 'serif'} ,
+'Rokkitt': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900'], 'category': 'serif'} ,
+'Rosario': {'variants': ['300', 'regular', '500', '600', '700', '300italic', 'italic', '500italic', '600italic', '700italic'], 'category': 'sans-serif'} ,
+'Rozha One': {'variants': ['regular'], 'category': 'serif'} ,
+'Rubik': {'variants': ['300', 'regular', '500', '600', '700', '800', '900', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Ruda': {'variants': ['regular', '500', '600', '700', '800', '900'], 'category': 'sans-serif'} ,
+'Rufina': {'variants': ['regular', '700'], 'category': 'serif'} ,
+'Sacramento': {'variants': ['regular'], 'category': 'handwriting'} ,
+'Sancreek': {'variants': ['regular'], 'category': 'display'} ,
+'Shrikhand': {'variants': ['regular'], 'category': 'display'} ,
+'Signika': {'variants': ['300', 'regular', '500', '600', '700'], 'category': 'sans-serif'} ,
+'Sintony': {'variants': ['regular', '700'], 'category': 'sans-serif'} ,
+'Six Caps': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Slabo 27px': {'variants': ['regular'], 'category': 'serif'} ,
+'Source Sans Pro': {'variants': ['200', '200italic', '300', '300italic', 'regular', 'italic', '600', '600italic', '700', '700italic', '900', '900italic'], 'category': 'sans-serif'} ,
+'Source Serif Pro': {'variants': ['200', '200italic', '300', '300italic', 'regular', 'italic', '600', '600italic', '700', '700italic', '900', '900italic'], 'category': 'serif'} ,
+'Space Mono': {'variants': ['regular', 'italic', '700', '700italic'], 'category': 'monospace'} ,
+'Spectral': {'variants': ['200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic'], 'category': 'serif'} ,
+'Spline Sans': {'variants': ['300', 'regular', '500', '600', '700'], 'category': 'sans-serif'} ,
+'Squada One': {'variants': ['regular'], 'category': 'display'} ,
+'Stick No Bills': {'variants': ['200', '300', 'regular', '500', '600', '700', '800'], 'category': 'sans-serif'} ,
+'Stint Ultra Expanded': {'variants': ['regular'], 'category': 'display'} ,
+'Syne': {'variants': ['regular', '500', '600', '700', '800'], 'category': 'sans-serif'} ,
+'Taviraj': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'serif'} ,
+'Teko': {'variants': ['300', 'regular', '500', '600', '700'], 'category': 'sans-serif'} ,
+'Tenor Sans': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Titillium Web': {'variants': ['200', '200italic', '300', '300italic', 'regular', 'italic', '600', '600italic', '700', '700italic', '900'], 'category': 'sans-serif'} ,
+'Trirong': {'variants': ['100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic'], 'category': 'serif'} ,
+'Ubuntu': {'variants': ['300', '300italic', 'regular', 'italic', '500', '500italic', '700', '700italic'], 'category': 'sans-serif'} ,
+'Uchen': {'variants': ['regular'], 'category': 'serif'} ,
+'Ultra': {'variants': ['regular'], 'category': 'serif'} ,
+'Unica One': {'variants': ['regular'], 'category': 'display'} ,
+'Varela': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Varela Round': {'variants': ['regular'], 'category': 'sans-serif'} ,
+'Varta': {'variants': ['300', 'regular', '500', '600', '700'], 'category': 'sans-serif'} ,
+'Vollkorn': {'variants': ['regular', '500', '600', '700', '800', '900', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'serif'} ,
+'Work Sans': {'variants': ['100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic'], 'category': 'sans-serif'} ,
+'Yatra One': {'variants': ['regular'], 'category': 'display'} ,
+'Yellowtail': {'variants': ['regular'], 'category': 'handwriting'} ,
+'Yeseva One': {'variants': ['regular'], 'category': 'display'} ,
+'Zilla Slab': {'variants': ['300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic'], 'category': 'serif'} ,
+}
+
+let font_weights_obj = cleanFontWeights();
+
+function cleanFontWeights () {
+  for (const [key, value] of Object.entries(font_weights_start)) {
+    // let variants = value.variants
+    let i = 0;
+    while(i < value.variants.length){
+
+      if(value.variants[i] == "100italic"){
+        value.variants.splice(i, 1);
+        i = 0;
+      }
+      else if (value.variants[i] == "200italic"){
+        value.variants.splice(i, 1);
+        i = 0;
+      }
+      else if (value.variants[i] == "300italic"){
+        value.variants.splice(i, 1);
+        i = 0;
+      }
+      else if (value.variants[i] == "italic"){
+        value.variants.splice(i, 1);
+        i = 0;
+      }
+      else if (value.variants[i] == "500italic"){
+        value.variants.splice(i, 1);
+        i = 0;
+      }
+      else if (value.variants[i] == "600italic"){
+        value.variants.splice(i, 1);
+        i = 0;
+      }
+      else if (value.variants[i] == "700italic"){
+        value.variants.splice(i, 1);
+        i = 0;
+      }
+      else if (value.variants[i] == "800italic"){
+        value.variants.splice(i, 1);
+        i = 0;
+      }
+      else if (value.variants[i] == "900italic"){
+        value.variants.splice(i, 1);
+        i = 0;
+      }
+      else if (value.variants[i] == "regular"){
+        value.variants[i] = "400"
+        i = 0;
+      }
+      i++;
+    }
+    // const indexone = value.variants.indexOf("100italic");
+    // const one = value.variants.splice(indexone, 1);    
+    // const indextwo = value.variants.indexOf("200italic");
+    // const two = one.splice(indextwo, 1);
+    // const indexthree = value.variants.indexOf("300italic");
+    // const three = two.splice(indexthree, 1);
+    // const indexfour = value.variants.indexOf("italic");
+    // const four = three.splice(indexfour, 1);
+    // const indexfive = value.variants.indexOf("500italic");
+    // const five = three.splice(indexfive, 1);
+    // value.variants = variants;
+    // console.log(value.variants)
+  }
+  return font_weights_start;
+}
+
 
 let fontpairs_array = convertListToNestedArray(list);
 
@@ -278,6 +433,9 @@ let unique_heading_fonts = findUniqueFonts(fontpairs_array, "heading");
 let unique_body_fonts = findUniqueFonts(fontpairs_array, "body");
 let unique_fonts = findUniqueFonts(fontpairs_array, "all");
 
+// var json_string = JSON.stringify(unique_fonts);
+// document.getElementById("body-display").innerHTML = unique_fonts
+
 createDropdown("heading-fonts", unique_heading_fonts);
 createDropdown("body-fonts", unique_body_fonts);
 
@@ -294,7 +452,201 @@ function createDropdown (dropdown_type, options) {
   }
 }
 
-createFontsPage();
+// createFontsPage();
+// createFamilyPage();
+
+function createFamilyHeading (heading) {
+  const alphabet = "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz";
+  const line_one = "AaBbDdEeGgMmOoRrSs";
+  const line_two = "1234567890!?()[]{}@$#%";
+  const weight_names_key = {
+    "100": "Thin",
+    "200": "Extra Light",
+    "300": "Light",
+    "400": "Regular",
+    "500": "Medium",
+    "600": "Semi Bold",
+    "700": "Bold",
+    "800": "Extra Bold",
+    "900": "Black",
+  }
+  
+  // let heading = heading
+  let heading_weights = font_weights_obj[heading]['variants']
+  let heading_category = font_weights_obj[heading]['category']
+
+  // let body = body
+
+  document.getElementById("heading-page").style.fontFamily = heading;
+  document.getElementById("heading-page").style.width = "500px";
+  document.getElementById("heading-page").style.marginLeft = "-60px";
+  document.getElementById("heading-page").style.marginBottom = "20px";
+  // document.getElementById("heading-page").style.borderBottom = "1px solid white";
+  document.getElementById("heading-page").innerHTML = heading;
+  //document.getElementById("heading-page").style.fontSize = "20px";
+  const heading_font_div = document.createElement("div");
+  heading_font_div.style.fontSize = "12px"
+  heading_font_div.style.margin = "5px 0px"
+  heading_font_div.innerHTML = heading_category;
+  heading_font_div.id = "family-h-font"
+  document.getElementById("heading-page").appendChild(heading_font_div);
+
+  for(let i = 0; i < heading_weights.length; i++){
+    const heading_block = document.createElement("div")
+    heading_block.style.fontWeight = heading_weights[i];
+    heading_block.style.width = "220px"
+    heading_block.style.display = "inline-block"
+    heading_block.style.margin = "12px"
+    heading_block.id = "h-block-" + `${i}`;
+    document.getElementById("heading-page").appendChild(heading_block);
+
+    const heading_wnum = document.createElement("div")
+    heading_wnum.innerHTML = weight_names_key[heading_weights[i]];
+    heading_wnum.style.fontWeight = heading_weights[i];
+    heading_wnum.style.fontSize = "24px"
+    heading_wnum.id = "f-h-w-" + `${i}`;
+    document.getElementById(`h-block-${i}`).appendChild(heading_wnum);
+
+    const heading_abc = document.createElement("div")
+    heading_abc.innerHTML = line_one;
+    heading_abc.style.fontWeight = heading_weights[i];
+    heading_abc.id = "f-h-a-" + `${i}`;
+    document.getElementById(`h-block-${i}`).appendChild(heading_abc);
+
+    const heading_etc = document.createElement("div")
+    heading_etc.innerHTML = line_two;
+    heading_etc.style.fontWeight = heading_weights[i];
+    heading_etc.id = "f-h-e-" + `${i}`;
+    document.getElementById(`h-block-${i}`).appendChild(heading_etc);
+  }
+
+  const alpha_block = document.createElement("div");
+  alpha_block.id = "heading-ablock";
+  // alpha_block.innerHTML = ""
+  alpha_block.style.display = "block"
+  // alpha_block.style.width = "90%"
+  alpha_block.style.fontSize = "24px"
+  // alpha_block.style.width = "90%"
+
+  // alpha_block.style.border = "1px solid white"
+  document.getElementById("heading-page").appendChild(alpha_block);
+
+  
+  const heading_reg = document.createElement("div")
+    heading_reg.innerHTML = alphabet;
+    heading_reg.style.fontWeight = "regular";
+    heading_reg.style.width = "220px"
+    heading_reg.style.display = "inline-block"
+    heading_reg.style.margin = "7px"
+    heading_reg.style.verticalAlign = "top"
+    // heading_reg.id = "h-block-" + `${i}`;
+    document.getElementById("heading-ablock").appendChild(heading_reg);
+
+    const heading_bold = document.createElement("div")
+    heading_bold.innerHTML = alphabet;
+    heading_bold.style.fontWeight = "bold";
+    heading_bold.style.width = "220px"
+    heading_bold.style.display = "inline-block"
+    heading_bold.style.margin = "7px"
+    heading_bold.style.verticalAlign = "top"
+    // heading_reg.id = "h-block-" + `${i}`;
+    document.getElementById("heading-ablock").appendChild(heading_bold);
+  // document.getElementById("heading-page")
+}
+
+function createFamilyBody (body) {
+  const alphabet = "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz";
+  const line_one = "AaBbDdEeGgMmOoRrSs";
+  const line_two = "1234567890!?()[]{}@$#%";
+  const weight_names_key = {
+    "100": "Thin",
+    "200": "Extra Light",
+    "300": "Light",
+    "400": "Regular",
+    "500": "Medium",
+    "600": "Semi Bold",
+    "700": "Bold",
+    "800": "Extra Bold",
+    "900": "Black",
+  }
+
+  let body_weights = font_weights_obj[body]['variants']
+  let body_category = font_weights_obj[body]['category']
+
+  
+  document.getElementById("body-page").style.fontFamily = body;
+  document.getElementById("body-page").style.width = "500px";
+  document.getElementById("body-page").style.marginLeft = "-60px";
+  document.getElementById("body-page").innerHTML = body;
+  //document.getElementById("heading-page").style.fontSize = "20px";
+  const body_font_div = document.createElement("div");
+  body_font_div.style.fontSize = "12px"
+  body_font_div.style.margin = "5px 0px"
+  body_font_div.innerHTML = body_category;
+  // body_font_div.id = "family-h-font"
+  document.getElementById("body-page").appendChild(body_font_div);
+
+  for(let i = 0; i < body_weights.length; i++){
+    const body_block = document.createElement("div")
+    body_block.style.fontWeight = body_weights[i];
+    body_block.style.width = "220px"
+    body_block.style.display = "inline-block"
+    body_block.style.margin = "12px"
+    body_block.id = "b-block-" + `${i}`;
+    document.getElementById("body-page").appendChild(body_block);
+
+    const body_wnum = document.createElement("div")
+    body_wnum.innerHTML = weight_names_key[body_weights[i]];
+    body_wnum.style.fontWeight = body_weights[i];
+    body_wnum.style.fontSize = "24px"
+    // heading_wnum.id = "f-h-w-" + `${i}`;
+    document.getElementById(`b-block-${i}`).appendChild(body_wnum);
+
+    const body_abc = document.createElement("div")
+    body_abc.innerHTML = line_one;
+    body_abc.style.fontWeight = body_weights[i];
+    // heading_abc.id = "f-h-a-" + `${i}`;
+    document.getElementById(`b-block-${i}`).appendChild(body_abc);
+
+    const body_etc = document.createElement("div")
+    body_etc.innerHTML = line_two;
+    body_etc.style.fontWeight = body_weights[i];
+    // body_etc.id = "f-h-e-" + `${i}`;
+    document.getElementById(`b-block-${i}`).appendChild(body_etc);
+  }
+
+  const balpha_block = document.createElement("div");
+  balpha_block.id = "body-ablock";
+  // alpha_block.innerHTML = ""
+  balpha_block.style.display = "block"
+  // alpha_block.style.width = "90%"
+  balpha_block.style.fontSize = "24px"
+  // alpha_block.style.width = "90%"
+
+  // alpha_block.style.border = "1px solid white"
+  document.getElementById("body-page").appendChild(balpha_block);
+
+  
+  const body_reg = document.createElement("div")
+    body_reg.innerHTML = alphabet;
+    body_reg.style.fontWeight = "regular";
+    body_reg.style.width = "220px"
+    body_reg.style.display = "inline-block"
+    body_reg.style.margin = "7px"
+    body_reg.style.verticalAlign = "top"
+    // heading_reg.id = "h-block-" + `${i}`;
+    document.getElementById("body-ablock").appendChild(body_reg);
+
+    const body_bold = document.createElement("div")
+    body_bold.innerHTML = alphabet;
+    body_bold.style.fontWeight = "bold";
+    body_bold.style.width = "220px"
+    body_bold.style.display = "inline-block"
+    body_bold.style.margin = "7px"
+    body_bold.style.verticalAlign = "top"
+    // heading_reg.id = "h-block-" + `${i}`;
+    document.getElementById("body-ablock").appendChild(body_bold);
+}
 
 function createFontsPage () {
   const alphabet = "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz";
@@ -303,7 +655,7 @@ function createFontsPage () {
     const div = document.createElement("div");
     div.id = "h-div" + `${i}`;
     div.innerHTML = `${unique_heading_fonts[i]}`;
-    div.style = "font-size: 24px; border: 1px solid lightgrey; border-radius: 8px; padding: 5px 20px; margin: 8px 0; text-align: center;"
+    div.style = "font-size: 24px; border: 1px solid white; border-radius: 8px; padding: 5px 20px; margin: 8px 0; text-align: center;"
     div.style.fontFamily = `${unique_heading_fonts[i]}`;
     document.getElementById("heading-page").appendChild(div);
   }
@@ -320,7 +672,7 @@ function createFontsPage () {
     const div = document.createElement("div");
     div.id = "b-div" + `${i}`;
     div.innerHTML = `${unique_body_fonts[i]}`;
-    div.style = "font-size: 24px; border: 1px solid lightgrey; border-radius: 8px; padding: 5px 20px; margin: 8px 0; text-align: center"
+    div.style = "font-size: 24px; border: 1px solid white; border-radius: 8px; padding: 5px 20px; margin: 8px 0; text-align: center"
     div.style.fontFamily = `${unique_body_fonts[i]}`;
     document.getElementById("body-page").appendChild(div);
   }
@@ -354,19 +706,20 @@ function clickFont (id) {
 
   if(id_type === "h"){
     let heading_font = unique_heading_fonts[index];
-    clearHeadingListStyling();
-    document.getElementById("h-div" + `${index}`).style.borderWidth = "4px" 
-    document.getElementById("h-div" + `${index}`).style.borderColor = "blue" 
-    document.getElementById("h-div" + `${index}`).style.margin = "5px 0";
+    // clearHeadingListStyling();
+    document.getElementById("h-div" + `${index}`).style.borderWidth = "6px"
+    // document.getElementById("h-div" + `${index}`).style.borderColor = "blue" 
+    document.getElementById("h-div" + `${index}`).style.margin = "2px -6px";
     changeDropdown("heading-fonts", heading_font);
     document.getElementById("heading-display").style.fontFamily = heading_font;
   }
   else{
     let body_font = unique_body_fonts[index];
-    clearBodyListStyling();
-    document.getElementById("b-div" + `${index}`).style.borderWidth = "4px" 
-    document.getElementById("b-div" + `${index}`).style.borderColor = "blue" 
-    document.getElementById("b-div" + `${index}`).style.margin = "5px 0";
+    // clearBodyListStyling();
+    // document.getElementById("b-div" + `${index}`).style.borderLeftWidth = "10px" 
+    document.getElementById("b-div" + `${index}`).style.borderWidth = "6px" 
+    // document.getElementById("b-div" + `${index}`).style.borderColor = "blue" 
+    document.getElementById("b-div" + `${index}`).style.margin = "2px -6px";
     changeDropdown("body-fonts", body_font);
     document.getElementById("body-display").style.fontFamily = body_font;
   }
@@ -376,7 +729,7 @@ function clickFont (id) {
 function clearBodyListStyling () {
   for(let i = 0; i < unique_body_fonts.length; i++){
     document.getElementById("b-div" + `${i}`).style.borderWidth = "1px" 
-    document.getElementById("b-div" + `${i}`).style.borderColor = "lightgrey" 
+    document.getElementById("b-div" + `${i}`).style.borderColor = `${document.getElementById("heading-display").style.color}`;
     document.getElementById("b-div" + `${i}`).style.margin = "8px 0";
   }
 }
@@ -384,7 +737,7 @@ function clearBodyListStyling () {
 function clearHeadingListStyling () {
   for(let i = 0; i < unique_heading_fonts.length; i++){
     document.getElementById("h-div" + `${i}`).style.borderWidth = "1px" 
-    document.getElementById("h-div" + `${i}`).style.borderColor = "lightgrey" 
+    document.getElementById("h-div" + `${i}`).style.borderColor = `${document.getElementById("heading-display").style.color}`; 
     document.getElementById("h-div" + `${i}`).style.margin = "8px 0";
   }
 }
@@ -392,61 +745,91 @@ function clearHeadingListStyling () {
 function clearPairListStyling () { 
   for(let i = 0; i < fontpairs_array.length; i++){
     document.getElementById("div" + `${i}`).style.borderWidth = "1px" 
-    document.getElementById("div" + `${i}`).style.borderColor = "lightgrey" 
-    document.getElementById("div" + `${i}`).style.margin = "12px -50px";
+    document.getElementById("div" + `${i}`).style.borderColor = `${document.getElementById("heading-display").style.color}`; 
+    document.getElementById("div" + `${i}`).style.margin = "12px 10px";
   }
 }
 
 function clearPageStyling () {
   clearPairListStyling();
-  clearHeadingListStyling();
-  clearBodyListStyling();
+  // clearHeadingListStyling();
+  // clearBodyListStyling();
 }
 
 createAllPairings();
+// console.log("OK", navigator.userAgent)
 
 function createAllPairings () {
-  const alphabet = "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz";
-  // console.log(fontpairs_array)
-  document.getElementById("heading-page").style = "margin-left: -90px; width: 220px; display: flex; flex-direction: column;";
-  document.getElementById("body-page").style = "margin-right: -90px; width: 220px; display: flex; flex-direction: column;";
+  const alphabet = "The quick brown fox jumps over the lazy dog";
+  // document.getElementById("heading-page").style = "margin-left: -90px; width: 220px; display: flex; flex-direction: column;";
+  // document.getElementById("body-page").style = "margin-right: -90px; width: 220px; display: flex; flex-direction: column;";
 
   for(let i = 0 ; i < fontpairs_array.length; i++){
     const pair_div = document.createElement("div");
     pair_div.id = "div" + `${i}`;
-    pair_div.style = "width: 400px; margin: 12px -50px; border: 1px solid lightgrey; border-radius: 8px; padding: 8px 20px; text-align: center"
+    pair_div.style = "width: 180px; margin: 12px 10px; border: 1px solid white; border-radius: 8px; padding: 8px 20px; text-align: center; display: inline-block; vertical-align: top; min-height: 100px"
     document.getElementById("all-pairings").appendChild(pair_div);
   }
   for(let i = 0 ; i < fontpairs_array.length; i++){
     const pair_heading_div = document.createElement("div");
-    pair_heading_div.innerHTML = `${fontpairs_array[i][0]}`;
+    pair_heading_div.id = `pairheading${i}`
+    pair_heading_div.innerHTML = `${fontpairs_array[i][0]} & ${fontpairs_array[i][1]}`;
     pair_heading_div.style.fontFamily = `${fontpairs_array[i][0]}`;
     pair_heading_div.style.fontSize = "24px";
     document.getElementById("div" + `${i}`).appendChild(pair_heading_div);
   }
-  for(let i = 0 ; i < fontpairs_array.length; i++){
-    const pair_heading_div = document.createElement("div");
-    pair_heading_div.innerHTML = alphabet;
-    pair_heading_div.style.fontFamily = `${fontpairs_array[i][0]}`;
-    document.getElementById("div" + `${i}`).appendChild(pair_heading_div);
-  }
+  // for(let i = 0 ; i < fontpairs_array.length; i++){
+  //   const pair_heading_div = document.createElement("div");
+  //   pair_heading_div.innerHTML = alphabet;
+  //   pair_heading_div.style.fontFamily = `${fontpairs_array[i][0]}`;
+  //   document.getElementById("div" + `${i}`).appendChild(pair_heading_div);
+  // }
+  // for(let i = 0 ; i < fontpairs_array.length; i++){
+  //   const pair_body_div = document.createElement("div");
+  //   pair_body_div.innerHTML = `${fontpairs_array[i][1]}`;
+  //   pair_body_div.style.fontFamily = `${fontpairs_array[i][1]}`;
+  //   pair_body_div.style.fontSize = "24px";
+  //   document.getElementById("div" + `${i}`).appendChild(pair_body_div);
+  // }
   for(let i = 0 ; i < fontpairs_array.length; i++){
     const pair_body_div = document.createElement("div");
-    pair_body_div.innerHTML = `${fontpairs_array[i][1]}`;
-    pair_body_div.style.fontFamily = `${fontpairs_array[i][1]}`;
-    pair_body_div.style.fontSize = "24px";
-    document.getElementById("div" + `${i}`).appendChild(pair_body_div);
-  }
-  for(let i = 0 ; i < fontpairs_array.length; i++){
-    const pair_body_div = document.createElement("div");
+    pair_body_div.id = `pairbody${i}`
     pair_body_div.innerHTML = alphabet;
     pair_body_div.style.fontFamily = `${fontpairs_array[i][1]}`;
     document.getElementById("div" + `${i}`).appendChild(pair_body_div);
+
+    // const list_links_bar = document.createElement("div");
+    // list_links_bar.id = `bar${i}`
+    // list_links_bar.style.padding = "0px"
+    // list_links_bar.style.marginLeft = "-10px"
+    // list_links_bar.style.marginRight = "-10px"
+    // // list_links_bar.style.verticalAlign = "bottom";
+    // // list_links_bar.style.border = "1px solid white"
+    // document.getElementById("div" + `${i}`).appendChild(list_links_bar);
+
+    // const list_link_heading = document.createElement("p");
+    // list_link_heading.id = `heading-link-${i}`
+    // list_link_heading.innerHTML = fontpairs_array[i][0]
+    // list_link_heading.style.display = "inline-block";
+    // list_link_heading.style.margin = "10px 20px 10px 0px";
+    // list_link_heading.style.cursor = "pointer";
+    // document.getElementById("bar" + `${i}`).appendChild(list_link_heading);
+
+    // const list_link_body = document.createElement("p");
+    // list_link_body.id = `body-link-${i}`
+    // list_link_body.innerHTML = fontpairs_array[i][1]
+    // list_link_body.style.display = "inline-block";
+    // list_link_body.style.margin = "10px 0px"
+    // list_link_body.style.cursor = "pointer"
+    // document.getElementById("bar" + `${i}`).appendChild(list_link_body);
+
+    // makeLinks(fontpairs_array[i][0], fontpairs_array[i][1], `heading-link-${i}`, `body-link-${i}`)
   }
   for(let i = 0 ; i < fontpairs_array.length; i++){
     document.getElementById("div" + `${i}`).addEventListener("click", function() {
       clickPairing(this.id);
     });
+    
   }
   
   // div.innerHTML = `${fontpairs_array[i][0]}` + " + " + `${fontpairs_array[i][1]}`;
@@ -461,15 +844,17 @@ function clickPairing (id) {
   let body_font = fonts[1];
 
   clearPairListStyling();
-  document.getElementById("div" + `${index}`).style.borderWidth = "4px" 
-    document.getElementById("div" + `${index}`).style.borderColor = "blue" 
-    document.getElementById("div" + `${index}`).style.margin = "9px -53px";
+  document.getElementById("div" + `${index}`).style.borderWidth = "6px" 
+    // document.getElementById("div" + `${index}`).style.borderColor = 
+    document.getElementById("div" + `${index}`).style.margin = "7px 5px";
 
   changeDropdown("heading-fonts", heading_font);
   changeDropdown("body-fonts", body_font);
 
   document.getElementById("heading-display").style.fontFamily = heading_font;
   document.getElementById("body-display").style.fontFamily = body_font;
+  createFamilyHeading(heading_font)
+  createFamilyBody(body_font)
 
   createFontpairLinks();
 }
@@ -482,11 +867,23 @@ function createGoogleFontsLink (fonts) {
   let link_string = "https://fonts.googleapis.com/css2?";
   for(let i = 0; i < (fonts.length); i++){
     let current_font = fonts[i];
-    link_string = link_string + "family="
+    let weights_str = ":wght@";
+    let weights_array = font_weights_obj[current_font]["variants"];
+    for(let i = 0; i < weights_array.length; i++){
+      weights_str += weights_array[i]
+      if(i < weights_array.length - 1){
+        weights_str += ";"
+      }
+    }
+
     current_font = current_font.replace(/(\s)/gm, "+");
+
+    link_string = link_string + "family="
     link_string = link_string + current_font;
+    link_string = link_string + weights_str;
     link_string = link_string + "&"
   }
+  // console.log(link_string, fonts[105])
   link_string = link_string + "display=block";
   a.href = link_string;
 
@@ -546,9 +943,10 @@ function setStartFont (heading_font, body_font) {
   document.getElementById("heading-display").style.fontWeight = 700;
  document.getElementById("body-display").style.fontFamily = `${body_font}`;
   // document.getElementById("alphabet-body-display").style.fontFamily = `${body_font}`;
-
+  createFamilyHeading(heading_font)
+  createFamilyBody(body_font)
   checkFontInFigma()
-  // console.log("fonts laod", document.fonts.check("12px helvetica"));
+
 }
 
 // window.setInterval(checkFontMatch, 5000);
@@ -560,12 +958,7 @@ function checkFontMatch () {
 
   var f = document.getElementById("body-fonts");
   var b_font =  f.options[f.selectedIndex].text;
-  // console.log("font chosen", b_font)
 
-  // console.log("font displayed", document.getElementById("heading-display").style.fontFamily)
-  // console.log("font displayed", document.getElementById("body-display").style.fontFamily)
-
-  // console.log("font computed", css(document.getElementById("heading-display"), "font-family"))
 }
 
 function css( element, property ) {
@@ -575,30 +968,40 @@ function css( element, property ) {
 function changeTabs (clicked_tab) {
   let page_displayed = null;
   if (clicked_tab === "left-tab"){page_displayed = "test-pairings"}
-  if (clicked_tab === "mid-tab") {page_displayed = "all-pairings"}
-  if (clicked_tab === "right-tab") {page_displayed = "all-fonts"}
+  if (clicked_tab === "right-tab") {page_displayed = "all-pairings"}
+  if (clicked_tab === "middle-tab") {page_displayed = "all-fonts"}
 
   document.getElementById("left-tab").style.backgroundColor = "white";
-  document.getElementById("mid-tab").style.backgroundColor = "white";
   document.getElementById("right-tab").style.backgroundColor = "white";
+  document.getElementById("middle-tab").style.backgroundColor = "white";
 
   document.getElementById("left-tab").style.borderBottom = "3px solid white";
-  document.getElementById("mid-tab").style.borderBottom = "3px solid white";
   document.getElementById("right-tab").style.borderBottom = "3px solid white";
+  document.getElementById("middle-tab").style.borderBottom = "3px solid white";
 
   document.getElementById("test-pairings").style.display = "none";
   document.getElementById("all-pairings").style.display = "none";
   document.getElementById("all-fonts").style.display = "none";
 
   document.getElementById(`${clicked_tab}`).style.backgroundColor = "lightgrey";
-  document.getElementById(`${clicked_tab}`).style.borderBottom = "3px solid blue";
+  document.getElementById(`${clicked_tab}`).style.borderBottom = "3px solid #1F96EE";
 
   document.getElementById(`${page_displayed}`).style.display = "block";
 
   if(page_displayed === "all-fonts"){
-    document.getElementById(`${page_displayed}`).style = "display: flex; flex-direction: row; justify-content: space-evenly;"
+    document.getElementById(`${page_displayed}`).style = "display: block;"
     // document.getElementById("UI").style = "overflow: hidden"
-
+  }
+  
+  if(page_displayed === "test-pairings"){
+    document.getElementById("links-bar").style.display = "flex"
+    document.getElementById("heading-link").style.display = "inline"
+    document.getElementById("body-link").style.display = "inline"
+    // document.getElementById("pairing-link").style.display = "inline-block"
+    // document.getElementById("links-bar").children.style.display = "inline-block"
+  }
+  else{
+    document.getElementById("links-bar").style.display = "none"
   }
   // else if(page_displayed === "all-pairings"){
   //   document.getElementById(`${page_displayed}`).style = "display: flex; flex-direction: row; justify-content: space-evenly;"
@@ -608,41 +1011,63 @@ function changeTabs (clicked_tab) {
   // }
 }
 
-function createFontpairLinks (header_font, body_font) {
-  let base_link = "https://www.fontpair.co/";
+createFontpairLinks()
+
+function createFontpairLinks () {
 
   let e = document.getElementById("heading-fonts");
-  let link_heading_font = e.options[e.selectedIndex].text;
+  let heading_font = e.options[e.selectedIndex].text;
 
   let f = document.getElementById("body-fonts");
-  let link_body_font = f.options[f.selectedIndex].text;
+  let body_font = f.options[f.selectedIndex].text;
 
-  // console.log("heading", base_link + "fonts/" + link_heading_font)
-  // console.log("body", base_link + "fonts/" + link_body_font)
+  makeLinks(heading_font, body_font, "heading-link", "body-link")
 
-  document.getElementById("heading-link").innerHTML = link_heading_font;
-  document.getElementById("body-link").innerHTML = link_body_font;
+  
+  }
 
-  link_heading_font = link_heading_font.toLowerCase();
+  function makeLinks(heading_font, body_font, heading_id, body_id) {
+  let base_link = "https://www.fontpair.co/";
+
+  link_heading_font = heading_font.toLowerCase();
+  link_pair_h_font = link_heading_font.replace(/\s/g, '-');
   link_heading_font = link_heading_font.replace(/\s/g, '');
 
-  link_body_font = link_body_font.toLowerCase();
+  link_body_font = body_font.toLowerCase();
+  link_pair_b_font = link_body_font.replace(/\s/g, '-');
   link_body_font = link_body_font.replace(/\s/g, '');
 
-  document.getElementById("heading-link").href = base_link + "fonts/" + link_heading_font;
-  document.getElementById("body-link").href = base_link + "fonts/" + link_body_font;
-  document.getElementById("pairing-link").href = base_link + link_heading_font + "-" + link_body_font;
 
-  // var url = window.location.href;
-  //   function UrlExists(url) {
-  //       var http = new XMLHttpRequest();
-  //       http.open('HEAD', url, false);
-  //       http.send();
-  //       if (http.status != 404)
-  //           return true;
-  //       else
-  //           return false;
-  //   }
+
+  // <p id="heading-link" style="padding-left: 25px; text-decoration: none; color: white">Epilogue</p>
+  // <p id="body-link" style="padding-left: 25px; text-decoration: none; color: white" >Inter</p>
+  // <p id="pairing-link" style="padding-left: 25px; text-decoration: none; color: white">View pairing</p>
+  // let heading_link_exists = linksExists(base_link + "fonts/" + link_heading_font)
+  // console.log(heading_link_exists)
+
+
+  document.getElementById(heading_id).innerHTML = heading_font;
+  // document.getElementById("heading-link").target = "_blank";
+  // document.getElementById("heading-link").rel = "noreferrer noopener";
+  document.getElementById(heading_id).onclick = openHeading;
+  function openHeading (){
+    // console.log('we are here', base_link + "fonts/" + link_heading_font)
+    window.open(base_link + "fonts/" + link_heading_font, "_blank", "noopener, noreferrer")
+  }
+
+  document.getElementById(body_id).innerHTML = body_font;
+  document.getElementById(body_id).onclick = openBody;
+  function openBody (){
+    // console.log('we are here', base_link + "fonts/" + link_heading_font)
+    window.open(base_link + "fonts/" + link_body_font, "_blank", "noopener, noreferrer")
+  }
+
+  // document.getElementById("pairing-link").innerHTML = link_body_font;
+  // document.getElementById("pairing-link").onclick = openPairing;
+  // function openPairing (){
+  //   // console.log('we are here', base_link + "fonts/" + link_heading_font)
+  //   window.open(base_link + "pairings/" + link_pair_h_font + "-" + link_pair_b_font, "_blank", "noopener, noreferrer")
+  // }
 
 }
 
@@ -653,6 +1078,14 @@ function changeFont(input_font, display_font){
   var font =  g.options[g.selectedIndex].text;
   document.getElementById(`${display_font}`).style.fontFamily = `'${font}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces from failing
   // document.getElementById("alphabet-" + `${display_font}`).style.fontFamily = `'${font}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces from failing
+  // console.log(input_font, display_font, font)
+  // createFamilyHeading(font);
+  if(display_font === "heading-display"){
+    createFamilyHeading(font);
+  }
+  else if (display_font === "body-display"){
+    createFamilyBody(font);
+  }
   clearPageStyling();
   createFontpairLinks();
   checkFontInFigma();
@@ -660,50 +1093,156 @@ function changeFont(input_font, display_font){
 
 
 //sets the color of the background, text, and mini color viwers based on hex value entered
-function color(input_type, style){ 
-  var type = input_type;
+function color (input_type, style) { 
+  // var type = input_type;
+  // console.log("0", input_type, style)
+
   const input = document.getElementById(`${input_type}`).value;
+
+  // console.log("1", style, input)
+
   if(input.length === 6){
     if(style === "background"){
       const background = document.getElementById("background");
       background.style.backgroundColor = `${input}`;
+      document.getElementById("links-bar").style.backgroundColor = `${input}`;
+      // document.getElementById("links-bar").style.borderColor = `${input}`;
       // document.getElementById("background-color-mini-display").style.backgroundColor = `${input}`;
       document.getElementById("background-color-mini-display").value = "#" + `${input}`;
     }
     else if(style === "text"){
-      const text = document.getElementById("background");
-      text.style.color = `${input}`;
+      // console.log("2", style, input)
+
+      changeHeadingColor(input)
+      changeBodyColor(input)
+
+      // const text = document.getElementById("background");
+      // text.style.color = `${input}`;
+
+
+      
+      // .style.borderColor = `${input}`
+      // document.getElementById("heading-page").children.style.borderColor = `${input}`;
+      // document.getElementById("body-page").children.style.borderColor = `${input}`;
+
       // document.getElementById("text-color-mini-display").style.backgroundColor = `${input}`;
-      console.log("colorr", `${input}`)
+
       document.getElementById("text-color-mini-display").value = "#" + `${input}`;
+      document.getElementById("heading-color-mini-display").value = "#" + `${input}`;
+      document.getElementById("body-color-mini-display").value = "#" + `${input}`;
+      document.getElementById("heading-color").value = `${input}`;
+      document.getElementById("body-color").value = `${input}`;
+
+
+    }
+    else if(style === "heading"){
+      // console.log("2", style, input)
+
+      changeHeadingColor(input)
+      document.getElementById("heading-color-mini-display").value = "#" + `${input}`;
+
+      document.getElementById("text-color-mini-display").value = "#" + `ffffff`;
+      document.getElementById("text-color").value = ``;
+    }
+    else if(style === "body"){
+      // console.log("2", style, input)
+
+      changeBodyColor(input)
+      document.getElementById("body-color-mini-display").value = "#" + `${input}`;
+
+      document.getElementById("text-color-mini-display").value = "#" + `ffffff`;
+      document.getElementById("text-color").value = ``;
     }
   }
 }
 
+function changeHeadingColor (input){
+
+  const text = document.getElementById("heading-display");
+  text.style.color = `${input}`;
+
+  document.getElementById("h-locked").style.color = `${input}`;
+  document.getElementById("h-unlocked").style.color = `${input}`;
+
+  document.getElementById("heading-link").style.color = `${input}`;
+  document.getElementById("body-link").style.color = `${input}`;
+
+  let pairings = document.getElementById("all-pairings").children
+  for (let i = 0; i < pairings.length; i++) {
+    pairings[i].style.borderColor = `${input}`;
+    document.getElementById(`pairheading${i}`).style.color = `${input}`;
+  }
+
+  let top_heading = document.getElementById("heading-page")
+  top_heading.style.color = `${input}`
+  let heading = top_heading.children
+  for (let i = 0; i < heading.length; i++) {
+    heading[i].style.color = `${input}`;
+  }
+}
+
+function changeBodyColor (input) {
+  const text = document.getElementById("body-display");
+  text.style.color = `${input}`;
+
+  document.getElementById("b-locked").style.color = `${input}`;
+  document.getElementById("b-unlocked").style.color = `${input}`;
+
+      // document.getElementById("pairing-link").style.color = `${input}`;
+
+  let pairings = document.getElementById("all-pairings").children
+  for (let i = 0; i < pairings.length; i++) {
+    pairings[i].style.borderColor = `${input}`;
+    document.getElementById(`pairbody${i}`).style.color = `${input}`;
+  }
+
+
+      let top_body = document.getElementById("body-page")
+      top_body.style.color = `${input}`
+      let body = top_body.children
+      for (let i = 0; i < body.length; i++) {
+        body[i].style.borderColor = `${input}`;
+      }
+}
+
 function colorPickerColor (input_type, style){
-  var type = input_type;
+  // var type = input_type;
   const input = document.getElementById(`${input_type}`).value;
 
-  // console.log("colorpick", input)
 
   if(style === "background"){
       const background = document.getElementById("background");
-      background.style.backgroundColor = `${input}`;
+      // background.style.backgroundColor = `${input}`;
       document.getElementById("background-color").value = `${input}`.substring(1);
+      color("background-color", "background")
       // document.getElementById("background-color").innerHTML = `${input}`;
       // document.getElementById("background-color-mini-display").style.backgroundColor = `${input}`;
       // document.getElementById("background-color-mini-display").value = "#" + `${input}`;
 
     }
     else if(style === "text"){
-      const text = document.getElementById("background");
-      text.style.color = `${input}`;
+      // console.log(style, input)
+      // const text = document.getElementById("background");
+      // text.style.color = `${input}`;
       document.getElementById("text-color").value = `${input}`.substring(1)
+      color("text-color", "text")
       // document.getElementById("text-color-mini-display").style.backgroundColor = `${input}`;
-      // console.log("colorr", `${input}`)
       // document.getElementById("text-color-mini-display").value = "#" + `${input}`;
     }
+    else if(style === "heading"){
 
+      document.getElementById("heading-color").value = `${input}`.substring(1)
+      color("heading-color", "heading")
+      // document.getElementById("text-color-mini-display").style.backgroundColor = `${input}`;
+      // document.getElementById("text-color-mini-display").value = "#" + `${input}`;
+    }
+    else if(style === "body"){
+
+      document.getElementById("body-color").value = `${input}`.substring(1)
+      color("body-color", "body")
+      // document.getElementById("text-color-mini-display").style.backgroundColor = `${input}`;
+      // document.getElementById("text-color-mini-display").value = "#" + `${input}`;
+    }
 }
 
 //selects randomly from the list of font pairings
@@ -711,16 +1250,17 @@ function makeRandomPairing() {
   let fonts = fontpairs_array;
 
   let randomIndex = Math.floor(Math.random() * fonts.length); 
-  console.log("lh", locked("heading"))
   if(locked("heading") === false){
     var heading = fonts[randomIndex][0];    
     document.getElementById("heading-display").style.fontFamily = `'${heading}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces (ex: Slabo 27px) from failing to be used
     changeDropdown("heading-fonts", heading);
+    createFamilyHeading(heading);
   }
   if(locked("body") === false){
     var body = fonts[randomIndex][1];
     document.getElementById("body-display").style.fontFamily = `'${body}'`; //inserting single quotes around the font prevents fonts with numbers surrounded by spaces (ex: Slabo 27px) from failing to be used
     changeDropdown("body-fonts", body);
+    createFamilyBody(body);
   }
   
   clearPageStyling();
@@ -731,30 +1271,34 @@ function makeRandomPairing() {
 let heading_locked = false;
 let body_locked = false;
 function lockClick (type) {
-  console.log(type)
+
   if(type === "heading"){
     heading_locked = !heading_locked;
     if(heading_locked === true){
-      document.getElementById("h-locked").style = "display: block; color: white; margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("h-locked").style = "display: block; margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("h-locked").style.color = document.getElementById("heading-display").style.color
       document.getElementById("h-unlocked").style.display = "none";
     }
     else{
-      document.getElementById("h-unlocked").style = "display: block; color: white; margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("h-unlocked").style = "display: block;  margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("h-unlocked").style.color = document.getElementById("heading-display").style.color
       document.getElementById("h-locked").style.display = "none";
     }
   }
   else{
     body_locked = !body_locked;
     if(body_locked === true){
-      document.getElementById("b-locked").style = "display: block; color: white;  margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("b-locked").style = "display: block;  margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("b-locked").style.color = document.getElementById("body-display").style.color
       document.getElementById("b-unlocked").style.display = "none";
     }
     else{
-      document.getElementById("b-unlocked").style = "display: block; color: white;  margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("b-unlocked").style = "display: block;  margin: 5px 10px 0px -30px; width: 20px";
+      document.getElementById("b-unlocked").style.color = document.getElementById("body-display").style.color
       document.getElementById("b-locked").style.display = "none";
     }
   }
-  console.log(body_locked)
+
 }
   
 
@@ -769,7 +1313,7 @@ function locked (type) {
 
 //makes dropdown menu match displlayed font when it is randomly grnerated, rather than manually selected
 function changeDropdown (dropdown_type, dropdown_value) {
-  console.log(dropdown_type, dropdown_value)
+
   let type = dropdown_type;
   let value = dropdown_value;
   var e = document.getElementById(`${type}`);
@@ -792,7 +1336,7 @@ function hexToRGB (color) {
 
 
 function checkFontInFigma () {
-  console.log("eee")
+
   var e = document.getElementById(`heading-fonts`);
   var heading_font = e.options[e.selectedIndex].text;
 
@@ -817,20 +1361,16 @@ function makeFrame () {
 
   let background_color = document.getElementById("background").style.backgroundColor;
   background_color = hexToRGB(background_color);
-  let text_color = document.getElementById("background").style.color;
-  text_color = hexToRGB(text_color);
+  let heading_color = document.getElementById("heading-display").style.color;
+  heading_color = hexToRGB(heading_color);
+  let body_color = document.getElementById("body-display").style.color;
+  body_color = hexToRGB(body_color);
+
   const heading_content = document.getElementById("heading-display").textContent;
   const body_content = document.getElementById("body-display").textContent;
 
 
 
-  parent.postMessage({ pluginMessage: { type: 'create-frame', heading_font, body_font, background_color, text_color, heading_content, body_content} }, '*');
+  parent.postMessage({ pluginMessage: { type: 'create-frame', heading_font, body_font, background_color, heading_color, body_color, heading_content, body_content} }, '*');
 }
 </script>
-
-<style type="text/css">
-  @font-face {
-  font-family: 'Yellowtail';
-  src: url(https://fonts.gstatic.com/s/yellowtail/v18/OZpGg_pnoDtINPfRIlLohlvHwQ.woff2) format('woff2');
-}
-</style>

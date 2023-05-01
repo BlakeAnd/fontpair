@@ -1,3 +1,7 @@
+To use this plugin visit: https://www.figma.com/community/plugin/1105220730154050357/Fontpair
+
+to start a new development environment.
+
 Below are the steps to get your plugin running. You can also find instructions at:
 
   https://www.figma.com/plugin-docs/setup/
